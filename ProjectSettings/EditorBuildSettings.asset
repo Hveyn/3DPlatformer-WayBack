@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestControllerFour.unity
+    guid: 688d4402223532e448f90d462541bdee
+  - enabled: 0
+    path: Assets/Scenes/TestControllerThree.unity
+    guid: b989dee99135e9344b503986017a2498
+  - enabled: 0
+    path: Assets/Scenes/TestControllerTwo.unity
+    guid: 175117a13e67b7746bdf3f300a3a57ad
+  m_configObjects: {}
