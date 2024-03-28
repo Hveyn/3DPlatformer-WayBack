@@ -54,7 +54,6 @@ public class PlayerMovementV3 : MonoBehaviour
     private float _jumpPressedRemember;
     private float _termVelocity;
     private float _termTime;
-    private float _elepsed;
 
     private bool _hoverOn = true;
     private bool _isJumping;
@@ -76,7 +75,7 @@ public class PlayerMovementV3 : MonoBehaviour
 
         initJumpVelocity = Mathf.Sqrt(2 * gravity * jumpHeight);
         //termVelocity = math.sqrt(initJumpVelocity^2 + 2*g*(jumpHeight - minJumpHeight))
-        _termVelocity = Mathf.Sqrt((initJumpVelocity * initJumpVelocity) + 2 * gravity * (jumpHeight - minJumpHeight));
+        _termVelocity = Mathf.Sqrt((initJumpVelocity * initJumpVelocity) + 2 * -gravity * (jumpHeight - minJumpHeight));
         Debug.Log($"_testVelocity: {_termVelocity}");
         
         //termTime = timeToApex - (2*(jumpHeight - minJumpHeight)/(initJumpVelocity + termVelocity))
@@ -299,22 +298,3 @@ public class PlayerMovementV3 : MonoBehaviour
 }
 
 
-/*elapsed = 0
-wantsToJump = false
-function love.update(dt)
-elapsed = elapsed + dt
-wantsToJump = false
-if isGrounded then
-if lastJump and elapsed - lastJump < 0.2 then
-    wantsToJump = true
-end
-end
-    ...
-end
-
-    lastJump = nil
-function love.keypressed(key, scancode, isrepeat)
-if key == "space" then
-    lastJump = elapsed
-end
-    end*/
