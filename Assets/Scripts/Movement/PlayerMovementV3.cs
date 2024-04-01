@@ -2,6 +2,7 @@ using System;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.VFX;
 
 public class PlayerMovementV3 : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class PlayerMovementV3 : MonoBehaviour
     [SerializeField] private float _jumpPressedRememberTime = 0.2f;
     [SerializeField] private float airMultiplier;
     
-    [FormerlySerializedAs("initialJumpVelocity")] [SerializeField, ReadOnly] private float initJumpVelocity;
+    [SerializeField, ReadOnly] private float initJumpVelocity;
     [SerializeField, ReadOnly] private float gravity;
 
     
@@ -41,6 +42,8 @@ public class PlayerMovementV3 : MonoBehaviour
     [Header("Ground Check")] 
     [SerializeField] private float playerHeight = 1.7f;
     [SerializeField] private float heightOnGround = 1f;
+
+    [Header("test VFX")] [SerializeField] private VisualEffect test;
     
     private PlayerInputHandler _inputHandler;
     private Rigidbody _rb;
@@ -49,20 +52,15 @@ public class PlayerMovementV3 : MonoBehaviour
     private Vector3 _moveDirection = Vector3.zero;
     private Vector3 _goalVel = Vector3.zero;
     
-    private int _MovementControlDisabledTime;
-    
     private float _jumpPressedRemember;
     private float _termVelocity;
     private float _termTime;
+    private float _coyoutTime;
 
     private bool _hoverOn = true;
     private bool _isJumping;
     private bool _isFalling;
     private bool _grounded;
-
-    
-    
-
     
     private void Start()
     {
@@ -94,11 +92,13 @@ public class PlayerMovementV3 : MonoBehaviour
                 _isFalling = false;
             }
         }
+
+        VFXControl();
     }
 
     private void FixedUpdate()
     {
-        if (!_isJumping && !_isFalling)
+        if (!_isFalling)
         {
             ApplyHoverForce();
         }
@@ -128,6 +128,27 @@ public class PlayerMovementV3 : MonoBehaviour
             }
             _isJumping = false;
             _isFalling = true;
+        }
+    }
+
+    private void VFXControl()
+    {
+        if (test != null)
+        {
+            if (_grounded && _moveDirection != Vector3.zero)
+            {
+                if (test.HasFloat("Duration"))
+                {
+                    test.SetFloat("Duration",1f);
+                }
+            }
+            else
+            {
+                if (test.HasFloat("Duration"))
+                {
+                    test.SetFloat("Duration",0);
+                }
+            }
         }
     }
     
