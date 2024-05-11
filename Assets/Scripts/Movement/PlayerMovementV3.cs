@@ -6,9 +6,7 @@ using UnityEngine.VFX;
 
 public class PlayerMovementV3 : MonoBehaviour
 {
-    [Header("GroundCheck")]
-    
-    
+   
     [Header("Movement settings")] 
     [SerializeField] private float maxSpeed = 3.0f;
     [SerializeField] private float acceleration = 200f; 
@@ -18,7 +16,6 @@ public class PlayerMovementV3 : MonoBehaviour
     [SerializeField] private float damping = 1f;
     [SerializeField] private float groundDrag;
     [SerializeField] private Transform orientation;
-
  
     [Header("Jump settings")]
     [SerializeField] private float jumpHeight = 1.0f;
@@ -26,7 +23,6 @@ public class PlayerMovementV3 : MonoBehaviour
     [SerializeField] private float timeToApex = 0.5f;
     [SerializeField] private float _jumpPressedRememberTime = 0.2f;
     [SerializeField] private float airMultiplier;
-    
     [SerializeField, ReadOnly] private float initJumpVelocity;
     [SerializeField, ReadOnly] private float gravity;
 
@@ -61,6 +57,12 @@ public class PlayerMovementV3 : MonoBehaviour
     private bool _isJumping;
     private bool _isFalling;
     private bool _grounded;
+
+    /// <summary>
+    /// тестовые переменные
+    /// </summary>
+    public bool IsJumping => _isJumping; 
+    public bool IsFalling => _isFalling; 
     
     private void Start()
     {
@@ -84,10 +86,11 @@ public class PlayerMovementV3 : MonoBehaviour
     private void Update()
     {
         JumpHandler();
+       
         if (_isFalling)
         {
-            if (Physics.Raycast(transform.position,
-                    transform.position + new Vector3(0f,  -playerHeight/2 - 0.3f, 0)))
+            
+            if (GroundCast(out RaycastHit hit))
             {
                 _isFalling = false;
             }
@@ -102,9 +105,9 @@ public class PlayerMovementV3 : MonoBehaviour
         {
             ApplyHoverForce();
         }
-
-        Move();        
         Jump();
+        Move();      
+        
     }
 
     private void JumpHandler()
@@ -232,9 +235,10 @@ public class PlayerMovementV3 : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
+        
         // Height On hover
-        Gizmos.DrawLine(transform.position + new Vector3(0, -playerHeight/2, 0),
-            transform.position + new Vector3(0,  -playerHeight/2 - 0.3f, 0));
+        /*Gizmos.DrawLine(transform.position + new Vector3(0, -playerHeight/2, 0),
+            transform.position + new Vector3(0,  -playerHeight/2 - 0.3f, 0));*/
 
         Gizmos.color = Color.red;
 

@@ -32,6 +32,7 @@ public class CharacterLocomotion : MonoBehaviour
             {
                 animator.SetBool(_isRunningHash, true);
             }
+            
         }
         else
         {
