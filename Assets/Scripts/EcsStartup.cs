@@ -10,17 +10,14 @@ sealed class EcsStartup : MonoBehaviour
     private EcsPipeline _pipeline;
     private EcsPipeline _testpipeline;
     
-    [SerializeField] private PlayerInputSettingsView playerInputSettingsView;
-    
     void Start () {
         _world = new EcsDefaultWorld();
         _pipeline = EcsPipeline.New()
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
             .Inject(_world)
-            .Inject(playerInputSettingsView)
             .AutoInject()
-            .AddUnityDebug()
+            .AddUnityDebug(_world)
             .BuildAndInit();
     }
 

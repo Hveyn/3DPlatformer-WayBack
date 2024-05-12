@@ -5,26 +5,21 @@ using Views;
 namespace Client {
     sealed class PlayerInputInitSystem : IEcsInit
     {
+        class Aspect : EcsAspect
+        {
+            public EcsPool<PlayerInputSettings> Settings = Inc;
+        }
+
         [EcsInject] private EcsDefaultWorld _world;
-        [EcsInject] private PlayerInputSettingsView _view;
         
         public void Init ()
         {
-            int inputEntity = _world.NewEntity();
-            
-            EcsPool<PlayerInput> playerInputPool = _world.GetPool<PlayerInput>();
-            EcsPool<PlayerInputSettings> inputSettingsPool = _world.GetPool<PlayerInputSettings>();
-            
-            ref PlayerInput playerInput = ref playerInputPool.Add(inputEntity);
-            ref PlayerInputSettings inputSettings = ref inputSettingsPool.Add(inputEntity);
-
-            inputSettings.PlayerControls = _view.playerConrols;
-            inputSettings.ActionMapName = _view.actionMapName;
-            inputSettings.Move = _view.move;
-            inputSettings.Look = _view.look;
-            inputSettings.Jump = _view.jump;
-            inputSettings.Sprint = _view.sprint;
-            inputSettings.LeftStickDeadzoneValue = _view.leftStickDeadzoneValue;
+            foreach (var e in _world.Where(out Aspect a))
+            {
+               UnityDebugService.Activate();
+               a.Settings.Get(e).Jump = "Jump";
+               EcsDebug.Print(a.Settings.Get(e).Jump);
+            }
         }
     }
 }

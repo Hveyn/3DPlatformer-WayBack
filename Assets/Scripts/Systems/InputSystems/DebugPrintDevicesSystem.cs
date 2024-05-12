@@ -9,7 +9,8 @@ namespace Client {
             {
                 if (device.enabled)
                 {
-                    Debug.Log("Active Device: " + device.name);
+                    UnityDebugService.Activate();
+                    EcsDebug.Print("Active Device: " + device.name);
                 }
             }
         }

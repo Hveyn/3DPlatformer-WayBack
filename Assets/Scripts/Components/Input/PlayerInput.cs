@@ -1,11 +1,29 @@
+using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Components {
-    struct PlayerInput: IEcsComponent {
-        public Vector2 MoveInput { get; private set; }
-        public Vector2 LookInput { get; private set; }
-        public bool JumpTriggered { get; private set; }
-        public float SprintValue { get; private set; }
+    [Serializable]
+    struct PlayerInput: IEcsComponent
+    {
+        public Vector2 MoveInput;
+        public Vector2 LookInput;
+        public bool JumpTriggered;
+        public float SprintValue;
+    }
+    [Serializable]
+    class InputPlayerTemplate : ComponentTemplate<PlayerInput>
+    {
+        [SerializeField]
+        protected PlayerInput input;
+        public override Type Type { get { return typeof(PlayerInput); } }
+        public override void Apply(short worldID, int entityID)
+        {
+            EcsWorld.GetPoolInstance<EcsPool<PlayerInput>>(worldID).TryAddOrGet(entityID);
+        }
+        public override object GetRaw() { return input; }
+        public override void SetRaw(object raw) { input = (PlayerInput)raw; }
+        public override void OnGizmos(Transform transform, IComponentTemplate.GizmosMode mode) { /*...*/ }
+        public override void OnValidate(UnityEngine.Object obj) { /*...*/ }
     }
 }
