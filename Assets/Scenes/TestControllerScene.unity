@@ -2625,8 +2625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935446173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13870119, y: -0.0000000085200345, z: 0.0000000011932727,
-    w: 0.99033433}
+  m_LocalRotation: {x: 0.13870119, y: 0.000000008520035, z: -0.0000000011932728, w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4213,7 +4212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deleteEntiityWithDestroy: 0
   _scriptableTemplates:
-  - {fileID: 11400000, guid: 8030c2d100d5186459869007a4902c6c, type: 2}
+  - {fileID: 11400000, guid: 29139d1646b96824c9dbacee58939589, type: 2}
   _monoTemplates: []
 --- !u!1 &1506560752
 GameObject:
