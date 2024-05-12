@@ -1,0 +1,5 @@
+namespace Components {
+    struct PlayerTag {
+        
+    }
+}
