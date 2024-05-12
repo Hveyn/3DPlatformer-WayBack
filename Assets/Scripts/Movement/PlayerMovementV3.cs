@@ -62,7 +62,7 @@ public class PlayerMovementV3 : MonoBehaviour
     /// тестовые переменные
     /// </summary>
     public bool IsJumping => _isJumping; 
-    public bool IsFalling => _isFalling; 
+    public float YVelocity => _rb.velocity.y; 
     
     private void Start()
     {

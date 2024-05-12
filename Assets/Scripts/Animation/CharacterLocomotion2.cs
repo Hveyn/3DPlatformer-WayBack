@@ -12,31 +12,25 @@ public class CharacterLocomotion2 : MonoBehaviour
     private PlayerInputHandler _inputHandler;
     private int _isRunningHash;
     private int _isJumpingHash;
-    private int _isFallingHash;
+    private int _yVelocityHash;
 
     private bool _isJumpAnimating;
     
     private void Start()
     {
         _inputHandler = PlayerInputHandler.Instance;
-        _isRunningHash = Animator.StringToHash("isRunning");
+        _isRunningHash = Animator.StringToHash("speed");
         _isJumpingHash = Animator.StringToHash("isJumping");
-        _isFallingHash = Animator.StringToHash("isFalling");
+        _yVelocityHash = Animator.StringToHash("yVelocity");
     }
 
     private void Update()
     {
-        if (_inputHandler.MoveInput != Vector2.zero)
-        {
-            animator.SetBool(_isRunningHash, true);
-        }
-        else
-        {
-            animator.SetBool(_isRunningHash, false);
-        }
-
+        
+        animator.SetFloat(_isRunningHash, _inputHandler.MoveInput.magnitude);
+        animator.SetFloat(_yVelocityHash, testFallingJumping.YVelocity);
         animator.SetBool(_isJumpingHash,testFallingJumping.IsJumping);
-        animator.SetBool(_isFallingHash,testFallingJumping.IsFalling);
+        
     }
 
 }
