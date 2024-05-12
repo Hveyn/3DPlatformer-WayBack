@@ -1,5 +1,6 @@
+using DCFApixels.DragonECS;
+
 namespace Components {
-    struct PlayerTag {
-        
+    struct PlayerTag: IEcsTagComponent {
     }
 }

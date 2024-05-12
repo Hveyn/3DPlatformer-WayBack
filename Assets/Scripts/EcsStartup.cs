@@ -1,54 +1,43 @@
-using Client;
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Di;
+using DCFApixels.DragonECS;
 using UnityEngine;
 using Views;
+using Client;
 
-sealed class EcsStartup : MonoBehaviour {
-    private EcsWorld _world;        
-    private IEcsSystems _systems;
 
+sealed class EcsStartup : MonoBehaviour
+{
+    private EcsDefaultWorld _world;        
+    private EcsPipeline _pipeline;
+    private EcsPipeline _testpipeline;
+    
     [SerializeField] private PlayerInputSettingsView playerInputSettingsView;
     
     void Start () {
-        _world = new EcsWorld ();
-        _systems = new EcsSystems (_world);
-        
-        _systems
-            .Add(new CursorLockSystem())
-            .Add(new PlayerInputInitSystem())
-            // register your systems here, for example:
-            // .Add (new TestSystem1 ())
-            // .Add (new TestSystem2 ())
-                
-            // register additional worlds here, for example:
-            // .AddWorld (new EcsWorld (), "events")
-#if UNITY_EDITOR
-            // add debug systems for custom worlds here, for example:
-            // .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ("events"))
+        _world = new EcsDefaultWorld();
+        _pipeline = EcsPipeline.New()
+            .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
-            .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ())
-            .Add(new Leopotam.EcsLite.UnityEditor.EcsSystemsDebugSystem())
-#endif
+            .Inject(_world)
             .Inject(playerInputSettingsView)
-            .Init ();
-            
+            .AutoInject()
+            .AddUnityDebug()
+            .BuildAndInit();
     }
 
     void Update () {
         // process systems here.
-        _systems?.Run ();
+        _pipeline?.Run ();
     }
 
     void OnDestroy () {
-        if (_systems != null) {
+        if (_pipeline != null) {
             // list of custom worlds will be cleared
             // during IEcsSystems.Destroy(). so, you
             // need to save it here if you need.
-            _systems.Destroy ();
-            _systems = null;
+            _pipeline.Destroy ();
+            _pipeline = null;
         }
-            
+          
         // cleanup custom worlds here.
             
         // cleanup default world.

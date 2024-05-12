@@ -1,8 +1,9 @@
+using DCFApixels.DragonECS;
 using UnityEngine.InputSystem;
 
 namespace Components
 {
-    struct PlayerInputSettings
+    struct PlayerInputSettings: IEcsComponent
     {
         //Input Action Asset
         public InputActionAsset PlayerControls;

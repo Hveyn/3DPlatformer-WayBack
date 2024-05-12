@@ -1,33 +1,30 @@
 using Components;
-using Leopotam.EcsLite;
-using Leopotam.EcsLite.Di;
+using DCFApixels.DragonECS;
 using Views;
 
 namespace Client {
-    sealed class PlayerInputInitSystem : IEcsInitSystem
+    sealed class PlayerInputInitSystem : IEcsInit
     {
-
-        readonly EcsCustomInject<PlayerInputSettingsView> _playerInputSettingsView = default;
+        [EcsInject] private EcsDefaultWorld _world;
+        [EcsInject] private PlayerInputSettingsView _view;
         
-        public void Init (IEcsSystems systems)
+        public void Init ()
         {
-            EcsWorld world = systems.GetWorld();
-
-            EcsPool<PlayerInput> playerInputPool = world.GetPool<PlayerInput>();
-            EcsPool<PlayerInputSettings> inputSettingsPool = world.GetPool<PlayerInputSettings>();
+            int inputEntity = _world.NewEntity();
             
-            int inputEntity = world.NewEntity();
-
+            EcsPool<PlayerInput> playerInputPool = _world.GetPool<PlayerInput>();
+            EcsPool<PlayerInputSettings> inputSettingsPool = _world.GetPool<PlayerInputSettings>();
+            
             ref PlayerInput playerInput = ref playerInputPool.Add(inputEntity);
             ref PlayerInputSettings inputSettings = ref inputSettingsPool.Add(inputEntity);
 
-            inputSettings.PlayerControls = _playerInputSettingsView.Value.playerConrols;
-            inputSettings.ActionMapName = _playerInputSettingsView.Value.actionMapName;
-            inputSettings.Move = _playerInputSettingsView.Value.move;
-            inputSettings.Look = _playerInputSettingsView.Value.look;
-            inputSettings.Jump = _playerInputSettingsView.Value.jump;
-            inputSettings.Sprint = _playerInputSettingsView.Value.sprint;
-            inputSettings.LeftStickDeadzoneValue = _playerInputSettingsView.Value.leftStickDeadzoneValue;
+            inputSettings.PlayerControls = _view.playerConrols;
+            inputSettings.ActionMapName = _view.actionMapName;
+            inputSettings.Move = _view.move;
+            inputSettings.Look = _view.look;
+            inputSettings.Jump = _view.jump;
+            inputSettings.Sprint = _view.sprint;
+            inputSettings.LeftStickDeadzoneValue = _view.leftStickDeadzoneValue;
         }
     }
 }
