@@ -32,7 +32,7 @@ namespace Components
         public override Type Type { get { return typeof(PlayerInputSettings); } }
         public override void Apply(short worldID, int entityID)
         {
-            EcsWorld.GetPoolInstance<EcsPool<PlayerInputSettings>>(worldID).TryAddOrGet(entityID);
+            EcsWorld.GetPoolInstance<EcsPool<PlayerInputSettings>>(worldID).TryAddOrGet(entityID)=component;
         }
         public override object GetRaw() { return inputSettings; }
         public override void SetRaw(object raw) { inputSettings = (PlayerInputSettings)raw; }

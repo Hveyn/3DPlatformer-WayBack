@@ -19,7 +19,7 @@ namespace Components {
         public override Type Type { get { return typeof(PlayerInput); } }
         public override void Apply(short worldID, int entityID)
         {
-            EcsWorld.GetPoolInstance<EcsPool<PlayerInput>>(worldID).TryAddOrGet(entityID);
+            EcsWorld.GetPoolInstance<EcsPool<PlayerInput>>(worldID).TryAddOrGet(entityID) = component;
         }
         public override object GetRaw() { return input; }
         public override void SetRaw(object raw) { input = (PlayerInput)raw; }
