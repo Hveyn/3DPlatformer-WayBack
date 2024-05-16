@@ -2625,8 +2625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935446173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13870119, y: -0.0000000085200345, z: 0.0000000011932727,
-    w: 0.99033433}
+  m_LocalRotation: {x: 0.13870119, y: 0.000000008520035, z: -0.0000000011932728, w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4132,11 +4131,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - rid: 7946135640442142745
+  - rid: -2
   - rid: 7946135640442142743
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 7946135640442142743
       type: {class: PlayerInputSettingsTemplate, ns: Components, asm: Assembly-CSharp}
       data:
@@ -4149,14 +4150,6 @@ MonoBehaviour:
           Jump: Jump
           Sprint: Sprint
           LeftStickDeadzoneValue: 0.2
-    - rid: 7946135640442142745
-      type: {class: InputPlayerTemplate, ns: Components, asm: Assembly-CSharp}
-      data:
-        component:
-          MoveInput: {x: 0, y: 0}
-          LookInput: {x: 0, y: 0}
-          JumpTriggered: 0
-          SprintValue: 0
 --- !u!4 &1454360254
 Transform:
   m_ObjectHideFlags: 0
