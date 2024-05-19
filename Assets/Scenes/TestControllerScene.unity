@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &88716861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee0213197fb57b49bdc3702f6fffa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSettings: {fileID: 11400000, guid: 2bf19d0971cf6e84caaf69a951c46912, type: 2}
 --- !u!1 &395831515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,7 +2626,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935446173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13870119, y: 0.000000008520035, z: -0.0000000011932728, w: 0.99033433}
+  m_LocalRotation: {x: 0.13870119, y: -0.0000000085200345, z: 0.0000000011932727,
+    w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3163,7 +3165,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 50
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -3189,8 +3191,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078907396}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.047631957, y: -0, z: -0, w: 0.99886495}
-  m_LocalPosition: {x: -1.31, y: 4.325, z: 0.8140001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4131,25 +4133,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - rid: -2
-  - rid: 7946135640442142743
+  - rid: 7946135793083088896
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 7946135640442142743
-      type: {class: PlayerInputSettingsTemplate, ns: Components, asm: Assembly-CSharp}
+    - rid: 7946135793083088896
+      type: {class: InputPlayerTemplate, ns: Components, asm: Assembly-CSharp}
       data:
         component:
-          PlayerControls: {fileID: -944628639613478452, guid: 0c77d300f2c2e9f4999b7dc724f7531e,
-            type: 3}
-          ActionMapName: Player
-          Move: Move
-          Look: Look
-          Jump: Jump
-          Sprint: Sprint
-          LeftStickDeadzoneValue: 0.2
+          moveInput: {x: 0, y: 0}
+          lookInput: {x: 0, y: 0}
+          jumpTriggered: 0
+          sprintValue: 0
+          moveAction:
+            m_Name: Move
+            m_Type: 0
+            m_ExpectedControlType: 
+            m_Id: bd8a84cd-ea41-48cb-9a85-5dcebb8f1e38
+            m_Processors: 
+            m_Interactions: 
+            m_SingletonActionBindings: []
+            m_Flags: 0
+          lookAction:
+            m_Name: Look
+            m_Type: 0
+            m_ExpectedControlType: 
+            m_Id: 4b834efb-f89e-48b7-9eca-46d1bd3a4255
+            m_Processors: 
+            m_Interactions: 
+            m_SingletonActionBindings: []
+            m_Flags: 0
+          jumpAction:
+            m_Name: Jump
+            m_Type: 0
+            m_ExpectedControlType: 
+            m_Id: 4058335a-4831-4e38-a34d-cb9fd2e3f4ea
+            m_Processors: 
+            m_Interactions: 
+            m_SingletonActionBindings: []
+            m_Flags: 0
+          sprintAction:
+            m_Name: Sprint
+            m_Type: 0
+            m_ExpectedControlType: 
+            m_Id: ab32008b-c9c2-4f24-ad45-0e3ac07fc941
+            m_Processors: 
+            m_Interactions: 
+            m_SingletonActionBindings: []
+            m_Flags: 0
 --- !u!4 &1454360254
 Transform:
   m_ObjectHideFlags: 0

@@ -2,27 +2,29 @@ using DCFApixels.DragonECS;
 using UnityEngine;
 using Views;
 using Client;
+using Components;
 
 
 sealed class EcsStartup : MonoBehaviour
 {
+    [SerializeField] private InputSettingsScriptableObject inputSettings;
     private EcsDefaultWorld _world;        
     private EcsPipeline _pipeline;
-    private EcsPipeline _testpipeline;
     
     void Start () {
-        _world = new EcsDefaultWorld();
+        _world = EcsDefaultWorldSingletonProvider.Instance.Get();
         _pipeline = EcsPipeline.New()
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
             .Inject(_world)
+            .Inject(inputSettings)
             .AutoInject()
             .AddUnityDebug(_world)
             .BuildAndInit();
     }
 
     void Update () {
-        // process systems here.
+        
         _pipeline?.Run ();
     }
 
@@ -31,15 +33,15 @@ sealed class EcsStartup : MonoBehaviour
             // list of custom worlds will be cleared
             // during IEcsSystems.Destroy(). so, you
             // need to save it here if you need.
-            _pipeline.Destroy ();
+            _pipeline.Destroy();
             _pipeline = null;
         }
-          
+        
         // cleanup custom worlds here.
             
         // cleanup default world.
         if (_world != null) {
-            _world.Destroy ();
+            _world.Destroy();
             _world = null;
         }
     }

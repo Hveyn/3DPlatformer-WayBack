@@ -8,6 +8,7 @@ namespace Client
         {
             b.Add(new CursorLockSystem());
             b.Add(new PlayerInputInitSystem());
+            b.Add(new PlayerInputDestroySystem());
         }
     }
 }
