@@ -3,11 +3,12 @@ using UnityEngine;
 using Views;
 using Client;
 using Components;
+using Mono.InputControl;
 
 
 sealed class EcsStartup : MonoBehaviour
 {
-    [SerializeField] private InputSettingsScriptableObject inputSettings;
+    [SerializeField] private PlayerInputHandler inputHandler;
     private EcsDefaultWorld _world;        
     private EcsPipeline _pipeline;
 
@@ -16,7 +17,7 @@ sealed class EcsStartup : MonoBehaviour
         _pipeline = EcsPipeline.New()
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
-            .Inject(_world, inputSettings)
+            .Inject(_world, inputHandler)
             .AutoInject()
             .AddUnityDebug(_world)
             .BuildAndInit();
