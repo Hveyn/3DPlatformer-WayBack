@@ -1,24 +1,29 @@
 using DCFApixels.DragonECS;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using PlayerInput = Components.PlayerInput;
+using Components;
 
 namespace Client {
-    sealed class PlayerInputInitSystem : IEcsInit
+    sealed class PlayerInputRunSystem : IEcsRun
     {
-        class Aspect : EcsAspect
+        class Aspect : EcsAspectAuto
         {
-            public EcsPool<PlayerInput> InputData = Inc;
+            [Inc] public EcsPool<PlayerInputData> InputData;
+            [Inc] public EcsTagPool<ApplyInputSettingsTag> ApplySettings;
         }
-
+        
         [EcsInject] private EcsDefaultWorld _world;
         [EcsInject] private InputSettingsScriptableObject settings;
         
-        public void Init ()
+        public void Run ()
         {
             foreach (var e in _world.Where(out Aspect a))
-            { 
-                EcsDebug.Print("InputSettings");
+            {
+                EcsTagPool<ApplyInputSettingsTag> tag = _world.GetTagPool<ApplyInputSettingsTag>();
+                    
+                UnityDebugService.Activate();
+                EcsDebug.Print("ApplyInputSettings");
+                
                a.InputData.Get(e).moveAction =
                    settings.playerControls.FindActionMap(settings.actionMapName).FindAction(settings.move);
                
@@ -30,9 +35,6 @@ namespace Client {
                
                a.InputData.Get(e).moveAction =
                    settings.playerControls.FindActionMap(settings.actionMapName).FindAction(settings.sprint);
-
-               InputSystem.settings.defaultDeadzoneMin = settings.leftStickDeadzoneValue;
-               
                
                a.InputData.Get(e).moveAction.performed += context => a.InputData.Get(e).moveInput = context.ReadValue<Vector2>();
                a.InputData.Get(e).moveAction.canceled += _ => a.InputData.Get(e).moveInput = Vector2.zero;
@@ -46,10 +48,14 @@ namespace Client {
                a.InputData.Get(e).sprintAction.performed += context => a.InputData.Get(e).sprintValue = context.ReadValue<float>();
                a.InputData.Get(e).sprintAction.canceled += _ => a.InputData.Get(e).sprintValue = 0f;
                
+               InputSystem.settings.defaultDeadzoneMin = settings.leftStickDeadzoneValue;
+
+               
                a.InputData.Get(e).moveAction.Enable();
                a.InputData.Get(e).lookAction.Enable();
                a.InputData.Get(e).jumpAction.Enable();
                a.InputData.Get(e).sprintAction.Enable();
+               tag.Del(e);
             }
         }
     }

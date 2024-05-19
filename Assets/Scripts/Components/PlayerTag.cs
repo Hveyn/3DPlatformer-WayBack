@@ -1,6 +1,8 @@
+using System;
 using DCFApixels.DragonECS;
 
 namespace Components {
-    struct PlayerTag: IEcsTagComponent {
-    }
+    [Serializable]
+    struct PlayerTag: IEcsTagComponent { }
+    class PlayerTagTemplate : TagComponentTemplate<PlayerTag> { }
 }

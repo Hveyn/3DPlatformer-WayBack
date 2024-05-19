@@ -7,8 +7,9 @@ namespace Client
         public void Import(EcsPipeline.Builder b)
         {
             b.Add(new CursorLockSystem());
-            b.Add(new PlayerInputInitSystem());
+            b.Add(new PlayerInputRunSystem());
             b.Add(new PlayerInputDestroySystem());
+            b.Add(new TestRun());
         }
     }
 }

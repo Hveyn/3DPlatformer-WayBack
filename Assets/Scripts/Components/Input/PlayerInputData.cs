@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Components {
     [Serializable]
-    struct PlayerInput: IEcsComponent
+    struct PlayerInputData: IEcsComponent
     {
         [Header("Inputs Data")]
         public Vector2 moveInput;
@@ -13,9 +13,9 @@ namespace Components {
         public bool jumpTriggered;
         public float sprintValue;
         
-        [HideInInspector]
+        
         public InputAction moveAction;
-        [HideInInspector]
+        
         public InputAction lookAction;
         [HideInInspector]
         public InputAction jumpAction;
@@ -23,5 +23,5 @@ namespace Components {
         public InputAction sprintAction;
     }
     
-    class InputPlayerTemplate : ComponentTemplate<PlayerInput> { }
+    class InputPlayerTemplate : ComponentTemplate<PlayerInputData> { }
 }

@@ -10,25 +10,24 @@ sealed class EcsStartup : MonoBehaviour
     [SerializeField] private InputSettingsScriptableObject inputSettings;
     private EcsDefaultWorld _world;        
     private EcsPipeline _pipeline;
-    
-    void Start () {
+
+    public void Start () {
         _world = EcsDefaultWorldSingletonProvider.Instance.Get();
         _pipeline = EcsPipeline.New()
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
-            .Inject(_world)
-            .Inject(inputSettings)
+            .Inject(_world, inputSettings)
             .AutoInject()
             .AddUnityDebug(_world)
             .BuildAndInit();
     }
 
-    void Update () {
+    public void Update () {
         
         _pipeline?.Run ();
     }
 
-    void OnDestroy () {
+    private void OnDestroy () {
         if (_pipeline != null) {
             // list of custom worlds will be cleared
             // during IEcsSystems.Destroy(). so, you

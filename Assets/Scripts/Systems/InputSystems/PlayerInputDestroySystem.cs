@@ -1,21 +1,22 @@
+using Components;
 using DCFApixels.DragonECS;
-using PlayerInput = Components.PlayerInput;
 
 namespace Client {
     sealed class PlayerInputDestroySystem : IEcsDestroy
     {
-        class Aspect : EcsAspect
+        class Aspect : EcsAspectAuto
         {
-            public EcsPool<PlayerInput> InputData = Inc;
+            [Inc] public EcsPool<PlayerInputData> InputData;
         }
 
-        private EcsDefaultWorld _world;
-        private InputSettingsScriptableObject settings;
+        [EcsInject] private EcsDefaultWorld _world;
+        [EcsInject] private InputSettingsScriptableObject settings;
         
         public void Destroy ()
         {
             foreach (var e in _world.Where(out Aspect a))
             {
+                EcsDebug.Print("DisableInput");
                a.InputData.Get(e).moveAction.Disable();
                a.InputData.Get(e).lookAction.Disable();
                a.InputData.Get(e).jumpAction.Disable();
