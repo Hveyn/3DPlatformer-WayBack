@@ -911,8 +911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336139258}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.092521004, y: -0.000000019154799, z: 0.0000000017798556,
-    w: 0.99571073}
+  m_LocalRotation: {x: 0.092521004, y: 0.000000019154802, z: -0.000000001779856, w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1010,7 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee0213197fb57b49bdc3702f6fffa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 0}
+  inputHandler: {fileID: 764602490}
 --- !u!1 &395831515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &764602490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4129,7 +4128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - rid: 7946135793083088896
-  - rid: 7946135794481627962
   references:
     version: 2
     RefIds:
@@ -4177,9 +4175,6 @@ MonoBehaviour:
             m_Interactions: 
             m_SingletonActionBindings: []
             m_Flags: 0
-    - rid: 7946135794481627962
-      type: {class: ApplyInputSettingsTagTemplate, ns: Components, asm: Assembly-CSharp}
-      data: {}
 --- !u!4 &1454360254
 Transform:
   m_ObjectHideFlags: 0
