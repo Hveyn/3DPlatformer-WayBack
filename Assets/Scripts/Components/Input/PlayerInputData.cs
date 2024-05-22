@@ -1,9 +1,8 @@
 using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace Components {
+namespace Components.Input {
     [Serializable]
     struct PlayerInputData: IEcsComponent
     {

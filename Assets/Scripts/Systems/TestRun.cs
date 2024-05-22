@@ -1,5 +1,6 @@
 using DCFApixels.DragonECS;
 using Components;
+using Components.Input;
 
 namespace Client {
     sealed class TestRun : IEcsRun

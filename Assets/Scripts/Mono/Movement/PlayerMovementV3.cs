@@ -100,10 +100,8 @@ namespace Mono.Movement
 
         private void FixedUpdate()
         {
-            if (!_isFalling)
-            {
-                ApplyHoverForce();
-            }
+            ApplyHoverForce();
+            
             Jump();
             Move();      
         

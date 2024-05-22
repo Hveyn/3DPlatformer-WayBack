@@ -3,6 +3,7 @@ using UnityEngine;
 using Client;
 using Components;
 using Mono.InputControl;
+using SOData;
 
 
 sealed class EcsStartup : MonoBehaviour
