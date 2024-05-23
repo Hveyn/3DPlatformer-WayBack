@@ -11,6 +11,10 @@ namespace Components.Physics
         public Rigidbody targetBody;
         public Rigidbody frameBody;
         public Vector3 direction;
+        
+        /// <summary>
+        /// Output
+        /// </summary>
         public float result;
     }
 }

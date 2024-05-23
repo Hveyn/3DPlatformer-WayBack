@@ -70,10 +70,7 @@ namespace Mono.Movement
             return false;
         }
 
-        float GetSpringDelta(RaycastHit hit)
-        {
-            return hit.distance - (hoverHeight - castRadius);
-        }
+
 
         static float GetRelativeSpeedAlongDirection(
             Rigidbody targetBody, 
@@ -87,6 +84,11 @@ namespace Mono.Movement
             return rayDirectionSpeed - hitBodyRayDirectionSpeed;
         }
 
+        float GetSpringDelta(RaycastHit hit)
+        {
+            return hit.distance - (hoverHeight - castRadius);
+        }
+        
         static float SpringStrength(float mass, float frequency)
         {
             return frequency * frequency * mass;

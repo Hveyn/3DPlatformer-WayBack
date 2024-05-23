@@ -10,6 +10,7 @@ namespace Components.Physics
         public float maxDistance;
         public float castRadius;
         public RaycastHit hit;
+        public LayerMask layers;
         public bool resultCast;
     }
     

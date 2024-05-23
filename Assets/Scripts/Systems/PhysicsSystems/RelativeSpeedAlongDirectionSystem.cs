@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Client.Physics
 {
-    sealed class RelativeSpeedAlongDirectionSystem: IEcsRun
+    sealed class RelativeSpeedAlongDirectionSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto
         {
@@ -14,7 +14,7 @@ namespace Client.Physics
 
         [EcsInject] private EcsDefaultWorld _world;
         
-        public void Run()
+        public void FixedRun()
         {
             foreach (var e in _world.Where(out Aspect a))
             {

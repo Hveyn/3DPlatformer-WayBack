@@ -697,6 +697,10 @@ MonoBehaviour:
   - rid: 7946135640442142723
   - rid: 7946135640442142722
   - rid: 7946135640442142721
+  - rid: 7946135867001405440
+  - rid: 7946135867001405443
+  - rid: 7946135867001405444
+  - rid: 7946135890923094016
   references:
     version: 2
     RefIds:
@@ -717,6 +721,32 @@ MonoBehaviour:
       data:
         component:
           obj: {fileID: 88716862}
+    - rid: 7946135867001405440
+      type: {class: HoverOnTagTemplate, ns: Components.Hover, asm: Assembly-CSharp}
+      data: {}
+    - rid: 7946135867001405443
+      type: {class: HoverSettingsTemplate, ns: Components.Hover, asm: Assembly-CSharp}
+      data:
+        component:
+          settings: {fileID: 11400000, guid: 5f3abdf9f07959f47bf434734c99363b, type: 2}
+          springDelta: 0
+          springStrength: 0
+          dampStrength: 0
+          springSpeed: 0
+          springForce: {x: 0, y: 0, z: 0}
+    - rid: 7946135867001405444
+      type: {class: HoverSettingsTemplate, ns: Components, asm: Assembly-CSharp}
+      data: {}
+    - rid: 7946135890923094016
+      type: {class: GroundCastResultTemplate, ns: Components.Physics, asm: Assembly-CSharp}
+      data:
+        component:
+          maxDistance: 1
+          castRadius: 0.4
+          layers:
+            serializedVersion: 2
+            m_Bits: 81
+          resultCast: 0
 --- !u!136 &88716862
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1120,7 +1150,7 @@ Transform:
   m_GameObject: {fileID: 436179591}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.31, y: 4.325, z: 0.8140001}
+  m_LocalPosition: {x: 1, y: 4.325, z: 0.8140001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2070,7 +2100,7 @@ GameObject:
   - component: {fileID: 612264810}
   - component: {fileID: 612264809}
   - component: {fileID: 612264808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2099,7 +2129,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612264806}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 918ad6d11b418264fa9daf9710dcea92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2361,7 +2391,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856095788}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 918ad6d11b418264fa9daf9710dcea92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3142,7 +3172,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 50
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -3168,8 +3198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078907396}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.047631957, y: -0, z: -0, w: 0.99886495}
+  m_LocalPosition: {x: 1, y: 4.325, z: 0.8140001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3442,7 +3472,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092887179}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 918ad6d11b418264fa9daf9710dcea92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3674,7 +3704,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148002979}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 918ad6d11b418264fa9daf9710dcea92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4110,12 +4140,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - rid: 7946135793083088896
+  - rid: 7946135890923094833
   references:
     version: 2
     RefIds:
-    - rid: 7946135793083088896
-      type: {class: InputPlayerTemplate, ns: Components, asm: Assembly-CSharp}
+    - rid: 7946135890923094833
+      type: {class: InputPlayerTemplate, ns: Components.Input, asm: Assembly-CSharp}
       data:
         component:
           moveInput: {x: 0, y: 0}
@@ -4348,7 +4378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1702730864
 Transform:
   m_ObjectHideFlags: 0
@@ -4358,7 +4388,7 @@ Transform:
   m_GameObject: {fileID: 1702730863}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.31, y: 2.325, z: 7.814}
+  m_LocalPosition: {x: 1, y: 2.325, z: 7.814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4481,7 +4511,7 @@ MonoBehaviour:
   castRadius: 0.4
   detectionLayers:
     serializedVersion: 2
-    m_Bits: 211
+    m_Bits: 83
   playerHeight: 2
   heightOnGround: 0.5
   test: {fileID: 1587317648}

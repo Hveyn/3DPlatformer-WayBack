@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Client.MovementSystems
 {
-    sealed class PrepareHoverSystem: IEcsRun
+    sealed class PrepareHoverSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto
         {
@@ -18,10 +18,12 @@ namespace Client.MovementSystems
         
         [EcsInject] private EcsDefaultWorld _world;
         
-        public void Run()
+        public void FixedRun()
         {
             foreach (var e in _world.Where(out Aspect a))
             {
+                UnityDebugService.Activate();
+                EcsDebug.Print($"resultCast: {a.CastResults.Get(e).resultCast}");
                 if (a.CastResults.Get(e).resultCast)
                 {
                     EcsTagPool<ApplyHoverForceTag> applyForce = _world.GetTagPool<ApplyHoverForceTag>();
@@ -35,11 +37,12 @@ namespace Client.MovementSystems
                     relativeSpeed.Get(e).frameBody = a.rb.Get(e).obj;
                     relativeSpeed.Get(e).frameBody = a.CastResults.Get(e).hit.rigidbody;
                     relativeSpeed.Get(e).direction = Vector3.down;
-                    
-                    getSpringForce.Get(e).springDelta = 
-                        a.CastResults.Get(e).hit.distance - 
-                                    (a.HoverDatas.Get(e).settings.hoverHeight - a.HoverDatas.Get(e).settings.castRadius);
-                    
+
+                    getSpringForce.Get(e).height = a.HoverDatas.Get(e).settings.hoverHeight;
+                    getSpringForce.Get(e).dampFactor = a.HoverDatas.Get(e).settings.dampFactor;
+                    getSpringForce.Get(e).dampFrequency = a.HoverDatas.Get(e).settings.dampFrequency;
+                    getSpringForce.Get(e).mass = a.rb.Get(e).obj.mass;
+                    getSpringForce.Get(e).direction = Vector3.down;
                     
                 }
             }

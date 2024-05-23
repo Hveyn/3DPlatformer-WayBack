@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dampFactor: 1
   dampFrequency: 15
-  hoverHeight: 1.5
-  maxDistance: 2
-  castRadius: 0.5
+  hoverHeight: 1.4
+  maxDistance: 1
+  castRadius: 0.4
+  detectionLayers:
+    serializedVersion: 2
+    m_Bits: 81
