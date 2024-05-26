@@ -15,6 +15,6 @@ namespace Components.Physics
         /// <summary>
         /// Output
         /// </summary>
-        public float result;
+        [FormerlySerializedAs("result")] public float relativeSpeed;
     }
 }

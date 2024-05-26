@@ -12,9 +12,9 @@ namespace Client.MovementSystems
         {
             [Inc] public EcsPool<GroundCastResult> CastResults;
             [Inc] public EcsPool<GetSpringForce> SpringForce;
-            [Inc] public EcsPool<UnityComponent<Rigidbody>> rb;
-            [Inc] public EcsTagPool<HoverOnTag> tag;
-            [Inc] public EcsTagPool<ApplyHoverForceTag> apply;
+            [Inc] public EcsPool<UnityComponent<Rigidbody>> Rb;
+            [Inc] public EcsTagPool<HoverOnTag> OnTag;
+            [Inc] public EcsTagPool<ApplyHoverForceTag> ApplyHoverForce;
         }
         
         [EcsInject] private EcsDefaultWorld _world;
@@ -23,16 +23,16 @@ namespace Client.MovementSystems
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-
-                a.SpringForce.Get(e).force -= UnityEngine.Physics.gravity;
-                a.rb.Get(e).obj.AddForce(a.SpringForce.Get(e).force);
-                if (a.CastResults.Get(e).hit.rigidbody)
-                    a.CastResults.Get(e).hit.rigidbody.AddForceAtPosition(-a.SpringForce.Get(e).force, 
-                        a.CastResults.Get(e).hit.point);
+                Vector3 springForce = a.SpringForce.Get(e).force;
+                RaycastHit hit = a.CastResults.Get(e).hit;
+                
+                springForce -= UnityEngine.Physics.gravity;
+                a.Rb.Get(e).obj.AddForce(springForce);
+                if (hit.rigidbody) 
+                    hit.rigidbody.AddForceAtPosition(-springForce, hit.point);
                 
                 a.SpringForce.Del(e);
-                a.apply.Del(e);
-                
+                a.ApplyHoverForce.Del(e);
             }
         }
         

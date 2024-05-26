@@ -18,11 +18,15 @@ namespace Client.Physics
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-                Vector3 velocity = a.GetSpeed.Get(e).frameBody.velocity;
-                Vector3 hitBodyVelocity = a.GetSpeed.Get(e).frameBody ? a.GetSpeed.Get(e).frameBody.velocity : default;
-                float rayDirectionSpeed = Vector3.Dot(a.GetSpeed.Get(e).direction, velocity);
-                float hitBodyRayDirectionSpeed = Vector3.Dot(a.GetSpeed.Get(e).direction, hitBodyVelocity);
-                a.GetSpeed.Get(e).result = rayDirectionSpeed - hitBodyRayDirectionSpeed;
+                Rigidbody targetBody = a.GetSpeed.Get(e).targetBody;
+                Rigidbody frameBody = a.GetSpeed.Get(e).frameBody;
+                Vector3 direction = a.GetSpeed.Get(e).direction;
+                
+                Vector3 velocity = targetBody.velocity;
+                Vector3 hitBodyVelocity = frameBody ? frameBody.velocity : default;
+                float rayDirectionSpeed = Vector3.Dot(direction, velocity);
+                float hitBodyRayDirectionSpeed = Vector3.Dot(direction, hitBodyVelocity);
+                a.GetSpeed.Get(e).relativeSpeed = rayDirectionSpeed - hitBodyRayDirectionSpeed;
             }
         }
     }

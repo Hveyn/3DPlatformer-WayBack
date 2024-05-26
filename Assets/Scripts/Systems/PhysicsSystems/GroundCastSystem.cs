@@ -20,9 +20,6 @@ namespace Client.Physics
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-                UnityDebugService.Activate();
-                var someMarker = new EcsProfilerMarker("GroundCastSystem");
-                someMarker.Begin();
                 
                 int hitCount = UnityEngine.Physics.SphereCastNonAlloc(
                     a.Rb.Get(e).obj.transform.position,
@@ -47,7 +44,6 @@ namespace Client.Physics
                     a.CastResult.Get(e).hit = default;
                     a.CastResult.Get(e).resultCast = false;
                 }
-                someMarker.End();
             }
         }
     }

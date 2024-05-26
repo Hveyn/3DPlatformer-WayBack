@@ -20,19 +20,27 @@ namespace Client.Physics
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-                float springDelta = a.Cast.Get(e).hit.distance -
-                                    (a.GetForce.Get(e).height - a.Cast.Get(e).castRadius);
+                float dampFrequency = a.GetForce.Get(e).dampFrequency;
+                float dampFactor = a.GetForce.Get(e).dampFactor;
+                float springSpeed = a.GetSpeed.Get(e).relativeSpeed;
+                float height = a.GetForce.Get(e).height;
+                float mass = a.GetForce.Get(e).mass;
+                float distance = a.Cast.Get(e).hit.distance;
+                float castRadius = a.Cast.Get(e).castRadius;
                 
-                float springStrength = a.GetForce.Get(e).dampFrequency * a.GetForce.Get(e).dampFrequency *
-                                       a.GetForce.Get(e).mass;
+                Vector3 direction = a.GetForce.Get(e).direction;
+                
+                float springDelta = distance - (height - castRadius);
+                
+                float springStrength = dampFrequency * dampFrequency * mass;
 
-                float criticalDampStrength = 2 * a.GetForce.Get(e).mass * a.GetForce.Get(e).dampFrequency;
-                float dampStrength = a.GetForce.Get(e).dampFactor * criticalDampStrength;
+                float criticalDampStrength = 2 * mass * dampFrequency;
+                float dampStrength = dampFactor * criticalDampStrength;
                 
                 float tension = springDelta * springStrength;
-                float damp = a.GetSpeed.Get(e).result * dampStrength;
+                float damp = springSpeed * dampStrength;
                 float forceMagnitude = tension - damp;
-                a.GetForce.Get(e).force = a.GetForce.Get(e).direction * forceMagnitude;
+                a.GetForce.Get(e).force = direction * forceMagnitude;
                 
                 a.GetSpeed.Del(e);
             }

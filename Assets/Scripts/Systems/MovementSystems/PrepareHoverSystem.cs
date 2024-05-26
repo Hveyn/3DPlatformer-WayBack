@@ -22,8 +22,6 @@ namespace Client.MovementSystems
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-                UnityDebugService.Activate();
-                EcsDebug.Print($"resultCast: {a.CastResults.Get(e).resultCast}");
                 if (a.CastResults.Get(e).resultCast)
                 {
                     EcsTagPool<ApplyHoverForceTag> applyForce = _world.GetTagPool<ApplyHoverForceTag>();
@@ -34,7 +32,7 @@ namespace Client.MovementSystems
                     relativeSpeed.Add(e);
                     getSpringForce.Add(e);
 
-                    relativeSpeed.Get(e).frameBody = a.rb.Get(e).obj;
+                    relativeSpeed.Get(e).targetBody = a.rb.Get(e).obj;
                     relativeSpeed.Get(e).frameBody = a.CastResults.Get(e).hit.rigidbody;
                     relativeSpeed.Get(e).direction = Vector3.down;
 
