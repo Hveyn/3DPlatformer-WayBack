@@ -24,6 +24,7 @@ sealed class EcsStartup : MonoBehaviour
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
             .Add(new JumpHandlerSystem())
+            .AddModule(new ModuleLocomotionSystems())
             .Inject(_world, inputHandler)
             .AutoInject()
             .AddUnityDebug(_world)
