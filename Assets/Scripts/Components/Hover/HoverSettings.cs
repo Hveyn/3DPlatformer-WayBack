@@ -8,7 +8,7 @@ namespace Components.Hover
     [Serializable]
     public struct HoverSettings: IEcsComponent
     {
-        public HoverSettingsSO settings;
+        public HoverSettingsSo settings;
     }
     
     class HoverSettingsTemplate: ComponentTemplate<HoverSettings> { }

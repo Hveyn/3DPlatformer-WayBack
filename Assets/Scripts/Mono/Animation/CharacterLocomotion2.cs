@@ -31,7 +31,7 @@ namespace Mono.Animation
         
             animator.SetFloat(_isRunningHash, _inputHandler.MoveInput.magnitude);
             animator.SetFloat(_yVelocityHash, testFallingJumping.YVelocity);
-            animator.SetBool(_isJumpingHash,testFallingJumping.IsJumping);
+            animator.SetBool(_isJumpingHash, testFallingJumping.IsJumping);
         
         }
 

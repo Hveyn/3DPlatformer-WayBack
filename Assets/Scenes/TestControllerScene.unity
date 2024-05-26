@@ -674,7 +674,6 @@ GameObject:
   - component: {fileID: 88716861}
   - component: {fileID: 88716866}
   - component: {fileID: 88716865}
-  - component: {fileID: 88716867}
   m_Layer: 3
   m_Name: PlayerECS
   m_TagString: Player
@@ -700,8 +699,10 @@ MonoBehaviour:
   - rid: 7946135640442142721
   - rid: 7946135867001405443
   - rid: 7946135867001405444
-  - rid: 7946135890923094016
   - rid: 7946135951149105185
+  - rid: 7946135951491465493
+  - rid: 7946135952550002962
+  - rid: 7946135952550002973
   references:
     version: 2
     RefIds:
@@ -727,27 +728,41 @@ MonoBehaviour:
       data:
         component:
           settings: {fileID: 11400000, guid: 5f3abdf9f07959f47bf434734c99363b, type: 2}
-          springDelta: 0
-          springStrength: 0
-          dampStrength: 0
-          springSpeed: 0
-          springForce: {x: 0, y: 0, z: 0}
     - rid: 7946135867001405444
       type: {class: HoverSettingsTemplate, ns: Components, asm: Assembly-CSharp}
       data: {}
-    - rid: 7946135890923094016
-      type: {class: GroundCastResultTemplate, ns: Components.Physics, asm: Assembly-CSharp}
-      data:
-        component:
-          maxDistance: 1
-          castRadius: 0.4
-          layers:
-            serializedVersion: 2
-            m_Bits: 81
-          resultCast: 0
     - rid: 7946135951149105185
       type: {class: HoverOnTagTemplate, ns: Components.Hover, asm: Assembly-CSharp}
       data: {}
+    - rid: 7946135951491465493
+      type: {class: MovementTemplate, ns: Components.Movement, asm: Assembly-CSharp}
+      data:
+        component:
+          settings: {fileID: 11400000, guid: 102173b55a1b5444097d4ebf893212e6, type: 2}
+          orientationObject: {fileID: 29207957}
+          moveDirection: {x: 0, y: 0, z: 0}
+          goalVel: {x: 0, y: 0, z: 0}
+    - rid: 7946135952550002962
+      type: {class: InputPlayerTemplate, ns: Components.Input, asm: Assembly-CSharp}
+      data:
+        component:
+          moveInput: {x: 0, y: 0}
+          lookInput: {x: 0, y: 0}
+          jumpTriggered: 0
+          sprintValue: 0
+    - rid: 7946135952550002973
+      type: {class: JumpTemplate, ns: Components.Movement, asm: Assembly-CSharp}
+      data:
+        component:
+          settings: {fileID: 11400000, guid: 4b960dbee67f88a4aa4a8f45efe26194, type: 2}
+          jumpPressedRemember: 0
+          termVelocity: 0
+          termTime: 0
+          coyoutTime: 0
+          initJumpVelocity: 0
+          gravity: 0
+          isJumping: 0
+          isFalling: 0
 --- !u!136 &88716862
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -846,23 +861,6 @@ MonoBehaviour:
   _scriptableTemplates: []
   _monoTemplates:
   - {fileID: 88716861}
---- !u!114 &88716867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88716860}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2367f66da226ab54baf048fe70d29bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dampFactor: 1
-  dampFrequency: 15
-  hoverHeight: 1.5
-  maxDistance: 2
-  castRadius: 0.5
 --- !u!1 &130943560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,95 +4125,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1 &1454360252
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1454360254}
-  - component: {fileID: 1454360253}
-  - component: {fileID: 1454360256}
-  - component: {fileID: 1454360255}
-  m_Layer: 0
-  m_Name: PlayerInputHandlerECS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1454360253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454360252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 351338ca92ace49499f450172d857af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _components:
-  - rid: 7946135890923094833
-  references:
-    version: 2
-    RefIds:
-    - rid: 7946135890923094833
-      type: {class: InputPlayerTemplate, ns: Components.Input, asm: Assembly-CSharp}
-      data:
-        component:
-          moveInput: {x: 0, y: 0}
-          lookInput: {x: 0, y: 0}
-          jumpTriggered: 0
-          sprintValue: 0
---- !u!4 &1454360254
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454360252}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1454360255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454360252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e244d7ed454067a4bb82fecd87513856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _connect: {fileID: 1454360256}
-  _world: {fileID: 11400000, guid: 5590bec63a6bb5a489f984e55eaaef4e, type: 2}
---- !u!114 &1454360256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454360252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 495156623a7b1e94087f916ba42745e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _deleteEntiityWithDestroy: 0
-  _scriptableTemplates: []
-  _monoTemplates:
-  - {fileID: 1454360253}
 --- !u!1 &1506560752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,7 +4728,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 12762523}
   - {fileID: 764602491}
-  - {fileID: 1454360254}
   - {fileID: 130943561}
   - {fileID: 870033636}
   - {fileID: 1702730864}

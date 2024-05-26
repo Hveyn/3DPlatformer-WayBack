@@ -3,10 +3,12 @@ using DCFApixels.DragonECS;
 using UnityEngine;
 using Client;
 using Client.MovementSystems;
+using Client.MovementSystems.MoveSystems;
 using Client.Physics;
 using Components;
 using Mono.InputControl;
 using SOData;
+using Systems.MovementSystems.JumpSystems;
 
 
 sealed class EcsStartup : MonoBehaviour
@@ -21,6 +23,7 @@ sealed class EcsStartup : MonoBehaviour
         _pipeline = EcsPipeline.New()
             .AddModule(new ModuleInputSystems())
             .Add(new DebugPrintDevices())
+            .Add(new JumpHandlerSystem())
             .Inject(_world, inputHandler)
             .AutoInject()
             .AddUnityDebug(_world)
@@ -33,7 +36,10 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new RelativeSpeedAlongDirectionSystem())
             .Add(new GetSpringForceSystem())
             .Add(new ApplyHoverForceSystem())
-            .Add(new DisableHoverSystem())
+            .Add(new PlayerMovementSystem())
+            .Add(new MoveSystem())
+            .Add(new JumpInitSystem())
+            .Add(new JumpSystem())
             .Inject(_world)
             .AutoInject()
             .BuildAndInit();

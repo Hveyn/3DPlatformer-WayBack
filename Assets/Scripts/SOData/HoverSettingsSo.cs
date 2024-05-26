@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace SOData
 {
-    [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/HoverSettingsScriptableObject", order = 1)]
-    public class HoverSettingsSO: ScriptableObject
+    [CreateAssetMenu(fileName = "Data", menuName = "ObjectSettings/HoverSettingsScriptableObject", order = 1)]
+    public class HoverSettingsSo: ScriptableObject
     {
         public float dampFactor = 1;
         public float dampFrequency = 15;

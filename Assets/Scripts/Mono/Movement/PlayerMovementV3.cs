@@ -166,13 +166,7 @@ namespace Mono.Movement
             // calculate movement direction
             var move = orientation.forward * _inputHandler.MoveInput.y +
                        orientation.right * _inputHandler.MoveInput.x;
-
-            /*if (_MovementControlDisabledTime > 0)
-        {
-            move = Vector3.zero;
-            _MovementControlDisabledTime -= Time.deltaTime;
-        }*/
-        
+            
             if (move.magnitude > 1.0f)
                 move.Normalize();
 
@@ -186,7 +180,7 @@ namespace Mono.Movement
         
             float speedFactor = _grounded ? 1f : airMultiplier;
         
-            Vector3 goalVel = _moveDirection * maxSpeed * speedFactor;
+            Vector3 goalVel = _moveDirection * (maxSpeed * speedFactor);
 
             _goalVel = Vector3.MoveTowards(_goalVel,
                 goalVel, accel * Time.deltaTime);
