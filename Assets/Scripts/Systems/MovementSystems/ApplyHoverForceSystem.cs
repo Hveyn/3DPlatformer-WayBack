@@ -24,7 +24,7 @@ namespace Client.MovementSystems
             foreach (var e in _world.Where(out Aspect a))
             {
                 Vector3 springForce = a.SpringForce.Get(e).force;
-                RaycastHit hit = a.CastResults.Get(e).hit;
+                RaycastHit hit = a.CastResults.Get(e).Hit;
                 
                 springForce -= UnityEngine.Physics.gravity;
                 a.Rb.Get(e).obj.AddForce(springForce);

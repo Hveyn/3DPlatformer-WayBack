@@ -33,6 +33,7 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new RelativeSpeedAlongDirectionSystem())
             .Add(new GetSpringForceSystem())
             .Add(new ApplyHoverForceSystem())
+            .Add(new DisableHoverSystem())
             .Inject(_world)
             .AutoInject()
             .BuildAndInit();

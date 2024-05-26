@@ -10,8 +10,7 @@ namespace Client.MovementSystems
     {
         class Aspect: EcsAspectAuto
         {
-            [Inc] public EcsPool<HoverData> HoverDatas;
-            [Inc] public EcsPool<GroundCastResult> CastResults;
+            [Inc] public EcsPool<HoverSettings> HoverSettings;
             [Inc] public EcsTagPool<HoverOnTag> tag;
             [Inc] public EcsPool<UnityComponent<Rigidbody>> rb;
         }
@@ -22,7 +21,18 @@ namespace Client.MovementSystems
         {
             foreach (var e in _world.Where(out Aspect a))
             {
-                if (a.CastResults.Get(e).resultCast)
+                EcsPool<GroundCastResult> cast = _world.GetPool<GroundCastResult>();
+
+                if (!cast.Has(e))
+                {
+                    cast.Add(e);
+                    
+                    cast.Get(e).maxDistance = a.HoverSettings.Get(e).settings.maxDistance;
+                    cast.Get(e).castRadius = a.HoverSettings.Get(e).settings.castRadius;
+                    cast.Get(e).layers = a.HoverSettings.Get(e).settings.detectionLayers;
+                }
+                
+                if (cast.Get(e).resultCast)
                 {
                     EcsTagPool<ApplyHoverForceTag> applyForce = _world.GetTagPool<ApplyHoverForceTag>();
                     EcsPool<GetRelativeSpeedAlongDirection> relativeSpeed = _world.GetPool<GetRelativeSpeedAlongDirection>();
@@ -33,12 +43,12 @@ namespace Client.MovementSystems
                     getSpringForce.Add(e);
 
                     relativeSpeed.Get(e).targetBody = a.rb.Get(e).obj;
-                    relativeSpeed.Get(e).frameBody = a.CastResults.Get(e).hit.rigidbody;
+                    relativeSpeed.Get(e).frameBody = cast.Get(e).Hit.rigidbody;
                     relativeSpeed.Get(e).direction = Vector3.down;
 
-                    getSpringForce.Get(e).height = a.HoverDatas.Get(e).settings.hoverHeight;
-                    getSpringForce.Get(e).dampFactor = a.HoverDatas.Get(e).settings.dampFactor;
-                    getSpringForce.Get(e).dampFrequency = a.HoverDatas.Get(e).settings.dampFrequency;
+                    getSpringForce.Get(e).height = a.HoverSettings.Get(e).settings.hoverHeight;
+                    getSpringForce.Get(e).dampFactor = a.HoverSettings.Get(e).settings.dampFactor;
+                    getSpringForce.Get(e).dampFrequency = a.HoverSettings.Get(e).settings.dampFrequency;
                     getSpringForce.Get(e).mass = a.rb.Get(e).obj.mass;
                     getSpringForce.Get(e).direction = Vector3.down;
                     

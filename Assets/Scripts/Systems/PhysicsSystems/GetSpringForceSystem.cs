@@ -25,7 +25,7 @@ namespace Client.Physics
                 float springSpeed = a.GetSpeed.Get(e).relativeSpeed;
                 float height = a.GetForce.Get(e).height;
                 float mass = a.GetForce.Get(e).mass;
-                float distance = a.Cast.Get(e).hit.distance;
+                float distance = a.Cast.Get(e).Hit.distance;
                 float castRadius = a.Cast.Get(e).castRadius;
                 
                 Vector3 direction = a.GetForce.Get(e).direction;

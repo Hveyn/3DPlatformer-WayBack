@@ -35,13 +35,13 @@ namespace Client.Physics
                     {
                         RaycastHit current =  a.Hits.Get(e).Hits[i];
                         if (current.rigidbody == a.Rb.Get(e).obj) continue;
-                        a.CastResult.Get(e).hit = current;
+                        a.CastResult.Get(e).Hit = current;
                         a.CastResult.Get(e).resultCast = true;
                     }
                 }
                 else
                 {
-                    a.CastResult.Get(e).hit = default;
+                    a.CastResult.Get(e).Hit = default;
                     a.CastResult.Get(e).resultCast = false;
                 }
             }
