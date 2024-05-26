@@ -1,13 +1,10 @@
-using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
 using Client;
 using Client.MovementSystems;
 using Client.MovementSystems.MoveSystems;
 using Client.Physics;
-using Components;
 using Mono.InputControl;
-using SOData;
 using Systems.MovementSystems.JumpSystems;
 
 
@@ -25,6 +22,7 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new DebugPrintDevices())
             .Add(new JumpHandlerSystem())
             .AddModule(new ModuleLocomotionSystems())
+            .Add(new CinemamachineRunSystem())
             .Inject(_world, inputHandler)
             .AutoInject()
             .AddUnityDebug(_world)
