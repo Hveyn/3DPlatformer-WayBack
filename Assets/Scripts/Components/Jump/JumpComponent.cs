@@ -13,6 +13,7 @@ namespace Components.Movement
         public float termTime;
         public float initJumpVelocity;
         public float gravity;
+        public float cayoteTimeRemember;
         
         public bool isJumping;
         public bool isFalling;

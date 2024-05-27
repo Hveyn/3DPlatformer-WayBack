@@ -22,12 +22,22 @@ namespace Client.Physics
         {
             foreach (var e in _world.Where(out Aspect a))
             {
+                if (a.GroundCast.Get(e).resultCast)
+                {
+                    a.JumpData.Get(e).cayoteTimeRemember = a.JumpData.Get(e).settings.cayoteTime;
+                }
+                else
+                {
+                    a.JumpData.Get(e).cayoteTimeRemember -= Time.deltaTime;
+                }
+                
                 if (a.JumpData.Get(e).jumpPressedRemember > 0 &&
-                    a.GroundCast.Get(e).resultCast)
+                    a.JumpData.Get(e).cayoteTimeRemember > 0)
                 {
                     Rigidbody rb = a.Rb.Get(e).obj;
                     //Debug.Log($"JumpVelocity: {a.JumpData.Get(e).initJumpVelocity}");
                     rb.velocity = new Vector3(rb.velocity.x, a.JumpData.Get(e).initJumpVelocity, rb.velocity.z);
+                    a.JumpData.Get(e).cayoteTimeRemember = 0f;
                 }
             }
         }

@@ -1,7 +1,6 @@
 using Components.Input;
 using Components.Movement;
 using DCFApixels.DragonECS;
-using Mono.InputControl;
 using UnityEngine;
 
 namespace Systems.MovementSystems.JumpSystems
@@ -28,7 +27,7 @@ namespace Systems.MovementSystems.JumpSystems
                 
                 if (a.PlayerInput.Get(e).jumpTriggered && !a.JumpData.Get(e).isJumping)
                 {
-                    a.JumpData.Get(e).jumpPressedRemember = a.JumpData.Get(e).settings.coyoteTime;
+                    a.JumpData.Get(e).jumpPressedRemember = a.JumpData.Get(e).settings.jumpPressedRememberTime;
                     a.JumpData.Get(e).isJumping = true;
                 }
                 if (!a.PlayerInput.Get(e).jumpTriggered && a.JumpData.Get(e).isJumping)
