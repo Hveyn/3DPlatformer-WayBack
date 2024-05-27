@@ -973,8 +973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336139258}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.092521004, y: 0.000000019154799, z: -0.0000000017798556,
-    w: 0.99571073}
+  m_LocalRotation: {x: 0.092521004, y: -0.000000019154802, z: 0.000000001779856, w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1038,6 +1037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 338889403}
   - component: {fileID: 338889404}
+  - component: {fileID: 338889405}
   m_Layer: 0
   m_Name: EcsInit
   m_TagString: Untagged
@@ -1073,6 +1073,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 764602490}
+  drawGizmos: {fileID: 338889405}
+--- !u!114 &338889405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338889401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02479f7c06d466492723116811e5588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395831515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 454b461dc3151c647804d62f0776055c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.395
+      value: -1.4913054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 454b461dc3151c647804d62f0776055c,
         type: 3}
@@ -4318,7 +4331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1702730864
 Transform:
   m_ObjectHideFlags: 0

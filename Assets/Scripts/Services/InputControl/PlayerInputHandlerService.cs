@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Mono.InputControl
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class PlayerInputHandlerService : MonoBehaviour
     {
         [Header("Input Action Asset")]
         [SerializeField] private InputActionAsset playerConrols;
@@ -30,7 +30,7 @@ namespace Mono.InputControl
         public bool JumpTriggered { get; private set; }
         public float SprintValue { get; private set; }
 
-        public static PlayerInputHandler Instance { get; private set; }
+        public static PlayerInputHandlerService Instance { get; private set; }
 
         private void Awake()
         {

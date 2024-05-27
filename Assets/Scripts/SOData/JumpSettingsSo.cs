@@ -1,4 +1,3 @@
-using Unity.Collections;
 using UnityEngine;
 
 namespace SOData
@@ -9,6 +8,10 @@ namespace SOData
         public float jumpHeight = 1.0f;
         public float minJumpHeight = 0.2f;
         public float timeToApex = 0.5f;
-        public float jumpPressedRememberTime = 0.2f;
+        
+        /// <summary>
+        /// JumpPressedRememberTime время нажатия прыжка
+        /// </summary>
+        public float coyoteTime = 0.2f;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Client.Physics
 {
-    sealed  class PhysicsInitSystem: IEcsInit
+    sealed class PhysicsInitSystem: IEcsInit
     {
         class Aspect : EcsAspectAuto
         {

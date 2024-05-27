@@ -11,7 +11,6 @@ namespace Components.Movement
         public float jumpPressedRemember;
         public float termVelocity;
         public float termTime;
-        public float coyoutTime;
         public float initJumpVelocity;
         public float gravity;
         

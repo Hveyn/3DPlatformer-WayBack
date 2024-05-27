@@ -5,12 +5,17 @@ using Client.MovementSystems;
 using Client.MovementSystems.MoveSystems;
 using Client.Physics;
 using Mono.InputControl;
+using Services;
+using Systems;
 using Systems.MovementSystems.JumpSystems;
+using UnityEngine.Serialization;
 
 
 sealed class EcsStartup : MonoBehaviour
 {
-    [SerializeField] private PlayerInputHandler inputHandler;
+    [SerializeField] private PlayerInputHandlerService inputHandlerService;
+    [SerializeField] private DebugDrawGizmosService drawGizmos;
+    
     private EcsDefaultWorld _world;        
     private EcsPipeline _pipeline;
     private EcsPipeline _fixedUpdatePipeline;
@@ -23,7 +28,8 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new JumpHandlerSystem())
             .AddModule(new ModuleLocomotionSystems())
             .Add(new CinemamachineRunSystem())
-            .Inject(_world, inputHandler)
+            .Add(new DebugDrawSystem())
+            .Inject(_world, inputHandlerService, drawGizmos)
             .AutoInject()
             .AddUnityDebug(_world)
             .BuildAndInit();

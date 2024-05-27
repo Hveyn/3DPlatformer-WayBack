@@ -16,11 +16,11 @@ namespace Mono.CameraControl
         [SerializeField] private Transform player;
         [SerializeField] private Transform playerObj;
     
-        private PlayerInputHandler _inputHandler;
+        private PlayerInputHandlerService inputHandlerService;
 
         private void Start()
         {
-            _inputHandler = PlayerInputHandler.Instance;
+            inputHandlerService = PlayerInputHandlerService.Instance;
         }
 
         private void Update()
@@ -35,7 +35,7 @@ namespace Mono.CameraControl
             orientation.forward = viewDir.normalized;
         
             //rotate player object
-            Vector3 inputDir = orientation.forward * _inputHandler.MoveInput.y + orientation.right * _inputHandler.MoveInput.x;
+            Vector3 inputDir = orientation.forward * inputHandlerService.MoveInput.y + orientation.right * inputHandlerService.MoveInput.x;
 
             if (inputDir != Vector3.zero)
                 playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);

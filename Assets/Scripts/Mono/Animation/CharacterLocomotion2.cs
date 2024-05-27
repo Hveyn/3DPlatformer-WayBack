@@ -11,7 +11,7 @@ namespace Mono.Animation
 
         [SerializeField] private PlayerMovementV3 testFallingJumping;
 
-        private PlayerInputHandler _inputHandler;
+        private PlayerInputHandlerService inputHandlerService;
         private int _isRunningHash;
         private int _isJumpingHash;
         private int _yVelocityHash;
@@ -20,7 +20,7 @@ namespace Mono.Animation
     
         private void Start()
         {
-            _inputHandler = PlayerInputHandler.Instance;
+            inputHandlerService = PlayerInputHandlerService.Instance;
             _isRunningHash = Animator.StringToHash("speed");
             _isJumpingHash = Animator.StringToHash("isJumping");
             _yVelocityHash = Animator.StringToHash("yVelocity");
@@ -29,7 +29,7 @@ namespace Mono.Animation
         private void Update()
         {
         
-            animator.SetFloat(_isRunningHash, _inputHandler.MoveInput.magnitude);
+            animator.SetFloat(_isRunningHash, inputHandlerService.MoveInput.magnitude);
             animator.SetFloat(_yVelocityHash, testFallingJumping.YVelocity);
             animator.SetBool(_isJumpingHash, testFallingJumping.IsJumping);
         

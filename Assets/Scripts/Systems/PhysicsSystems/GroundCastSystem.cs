@@ -28,7 +28,12 @@ namespace Client.Physics
                     a.Hits.Get(e).Hits,
                     a.CastResult.Get(e).maxDistance,
                     a.CastResult.Get(e).layers);
+                
+                //Debug CastRay
+                Debug.DrawRay(a.Rb.Get(e).obj.transform.position,
+                    -a.Rb.Get(e).obj.transform.up, Color.red, a.CastResult.Get(e).maxDistance);
 
+                
                 if (hitCount > 0)
                 {
                     for (int i = 0; i < hitCount; i++)

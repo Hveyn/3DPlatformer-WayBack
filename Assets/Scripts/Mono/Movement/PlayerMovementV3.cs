@@ -40,7 +40,7 @@ namespace Mono.Movement
 
         [Header("test VFX")] [SerializeField] private VisualEffect test;
     
-        private PlayerInputHandler _inputHandler;
+        private PlayerInputHandlerService inputHandlerService;
         private Rigidbody _rb;
         private RaycastHit[] _hits = new RaycastHit[10];
 
@@ -65,7 +65,7 @@ namespace Mono.Movement
     
         private void Start()
         {
-            _inputHandler = PlayerInputHandler.Instance;
+            inputHandlerService = PlayerInputHandlerService.Instance;
             _rb = GetComponent<Rigidbody>();
 
             gravity = (2 * jumpHeight) / (timeToApex * timeToApex);
@@ -111,12 +111,12 @@ namespace Mono.Movement
         {
             _jumpPressedRemember -= Time.deltaTime;
 
-            if (_inputHandler.JumpTriggered && !_isJumping)
+            if (inputHandlerService.JumpTriggered && !_isJumping)
             {
                 _jumpPressedRemember = jumpPressedRememberTime;
                 _isJumping = true;
             }
-            if (!_inputHandler.JumpTriggered && _isJumping)
+            if (!inputHandlerService.JumpTriggered && _isJumping)
             {
                 Debug.Log("Yvelocity: " + _rb.velocity.y); 
             
@@ -164,8 +164,8 @@ namespace Mono.Movement
         private void Move()
         {
             // calculate movement direction
-            var move = orientation.forward * _inputHandler.MoveInput.y +
-                       orientation.right * _inputHandler.MoveInput.x;
+            var move = orientation.forward * inputHandlerService.MoveInput.y +
+                       orientation.right * inputHandlerService.MoveInput.x;
             
             if (move.magnitude > 1.0f)
                 move.Normalize();
