@@ -1,5 +1,5 @@
 using Components.Movement;
-using Components.Physics;
+using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 

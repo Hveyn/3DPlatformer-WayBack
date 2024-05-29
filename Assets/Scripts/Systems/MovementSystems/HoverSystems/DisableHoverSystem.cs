@@ -1,6 +1,6 @@
 using Components;
 using Components.Hover;
-using Components.Physics;
+using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 

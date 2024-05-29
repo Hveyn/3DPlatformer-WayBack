@@ -3,7 +3,7 @@ using DCFApixels.DragonECS;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Components.Physics
+namespace Components.PhysicsComponents
 {
     [Serializable]
     public struct GetRelativeSpeedAlongDirection: IEcsComponent

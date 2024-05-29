@@ -1812,7 +1812,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336139258}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.092521004, y: -0.000000019154802, z: 0.000000001779856, w: 0.99571073}
+  m_LocalRotation: {x: 0.092521004, y: 0.000000019154799, z: -0.0000000017798556,
+    w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2288,7 +2289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &365484470
 Transform:
   m_ObjectHideFlags: 11
@@ -6936,7 +6937,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1406574782
 Transform:
@@ -7961,7 +7962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 124
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1640880455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11880,6 +11881,11 @@ PrefabInstance:
       propertyPath: managedReferences[7946135958496739328].component.cinemachineFreeLook
       value: 
       objectReference: {fileID: 436179594}
+    - target: {fileID: 1840855969005287275, guid: 657025ebe9fd2fd42b0be50c2abdf686,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3150283195722881567, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11928,6 +11934,11 @@ PrefabInstance:
     - target: {fileID: 3150283195722881567, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837182061795972441, guid: 657025ebe9fd2fd42b0be50c2abdf686,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

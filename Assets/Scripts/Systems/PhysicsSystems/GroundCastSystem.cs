@@ -1,9 +1,9 @@
-using DCFApixels.DragonECS;
 using Components;
-using Components.Physics;
+using Components.PhysicsComponents;
+using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.Physics
+namespace Systems.PhysicsSystems
 {
     sealed class GroundCastSystem: IEcsFixedRunProcess
     {
@@ -21,7 +21,7 @@ namespace Client.Physics
             foreach (var e in _world.Where(out Aspect a))
             {
                 
-                int hitCount = UnityEngine.Physics.SphereCastNonAlloc(
+                int hitCount = Physics.SphereCastNonAlloc(
                     a.Rb.Get(e).obj.transform.position,
                     a.CastResult.Get(e).castRadius,
                     -a.Rb.Get(e).obj.transform.up,
@@ -33,7 +33,7 @@ namespace Client.Physics
                 Debug.DrawRay(a.Rb.Get(e).obj.transform.position,
                     -a.Rb.Get(e).obj.transform.up, Color.red, a.CastResult.Get(e).maxDistance);
 
-                
+                Debug.Log("HitCOunt: "+hitCount);
                 if (hitCount > 0)
                 {
                     for (int i = 0; i < hitCount; i++)

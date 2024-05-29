@@ -1,6 +1,6 @@
 using DCFApixels.DragonECS;
 using Components;
-using Components.Physics;
+using Components.PhysicsComponents;
 using UnityEngine;
 
 namespace Client.Physics

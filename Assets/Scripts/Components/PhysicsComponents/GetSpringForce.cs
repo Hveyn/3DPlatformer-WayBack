@@ -2,7 +2,7 @@ using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Components.Physics
+namespace Components.PhysicsComponents
 {
     [Serializable]
     public struct GetSpringForce: IEcsComponent
