@@ -8,7 +8,6 @@ using Mono.InputControl;
 using Services;
 using Systems;
 using Systems.MovementSystems.JumpSystems;
-using UnityEngine.Serialization;
 
 
 sealed class EcsStartup : MonoBehaviour
