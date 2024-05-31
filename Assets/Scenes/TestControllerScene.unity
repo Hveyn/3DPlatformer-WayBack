@@ -5173,7 +5173,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935446173}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13870119, y: -0.000000008520035, z: 0.0000000011932728, w: 0.99033433}
+  m_LocalRotation: {x: 0.13870119, y: 0.0000000085200345, z: -0.0000000011932727,
+    w: 0.99033433}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11905,7 +11906,7 @@ PrefabInstance:
     - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
       propertyPath: _components.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
@@ -11949,6 +11950,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
+      propertyPath: _components.Array.data[13]
+      value: 7946136070383992832
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
+        type: 3}
       propertyPath: managedReferences[7946136065927283685]
       value: Assembly-CSharp Components.PhysicsComponents.GroundCastResultTemplate
       objectReference: {fileID: 0}
@@ -11974,9 +11980,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
+      propertyPath: managedReferences[7946136070383992832]
+      value: Assembly-CSharp Components.Input.CursorLockOnTemplate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
+        type: 3}
       propertyPath: managedReferences[7946135958496739328].component.camera
       value: 
       objectReference: {fileID: 1078907399}
+    - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
+        type: 3}
+      propertyPath: managedReferences[7946136070383992832].component.isLock
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1085208629727718292, guid: 657025ebe9fd2fd42b0be50c2abdf686,
         type: 3}
       propertyPath: managedReferences[7946136065927283685].component.castRadius
