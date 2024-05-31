@@ -32,7 +32,7 @@ namespace Systems.MovementSystems.JumpSystems
                 }
                 if (!a.PlayerInput.Get(e).jumpTriggered && a.JumpData.Get(e).isJumping)
                 {
-                    //Debug.Log("Yvelocity: " + rb.velocity.y); 
+                    Debug.Log("Yvelocity: " + rb.velocity.y); 
                     
                     if (rb.velocity.y > termVelocity)
                     {

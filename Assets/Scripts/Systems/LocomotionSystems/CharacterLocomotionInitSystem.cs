@@ -1,19 +1,21 @@
 using Components.Animations;
+using Components.Jump;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Client.LocomotionSystems
 {
-    sealed class CharacterLocomotionInitSystem: IEcsInit
+    sealed class CharacterLocomotionInitSystem: IEcsRun
     {
         class Aspect: EcsAspectAuto
         {
             [Inc] public EcsPool<UnityComponent<Animator>> CharacterAnimator;
+            [Inc] public EcsTagPool<PrepareAnimationTag> Tag;
         }
         
         [EcsInject] private EcsDefaultWorld _world;
         
-        public void Init()
+        public void Run()
         {
             foreach (var e in _world.Where(out Aspect a))
             {
@@ -27,6 +29,7 @@ namespace Client.LocomotionSystems
                 animations.Get(e).isRunningHash = Animator.StringToHash("speed");
                 animations.Get(e).isJumpingHash = Animator.StringToHash("isJumping");
                 animations.Get(e).yVelocityHash = Animator.StringToHash("yVelocity");
+                a.Tag.Del(e);
             }
         }
     }

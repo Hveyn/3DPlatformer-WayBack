@@ -23,8 +23,9 @@ sealed class EcsStartup : MonoBehaviour
     public void Start () {
         _world = EcsDefaultWorldSingletonProvider.Instance.Get();
         _pipeline = EcsPipeline.New()
+            .Add(new PhysicsInitSystem())
+            .Add(new JumpInitSystem())
             .AddModule(new ModuleInputSystems())
-            .Add(new DebugPrintDevices())
             .Add(new JumpHandlerSystem())
             .AddModule(new ModuleLocomotionSystems())
             .Add(new CinemamachineRunSystem())
@@ -35,7 +36,6 @@ sealed class EcsStartup : MonoBehaviour
             .BuildAndInit();
         
         _fixedUpdatePipeline =  EcsPipeline.New()
-            .Add(new PhysicsInitSystem())
             .Add(new GroundCastSystem())
             .Add(new PrepareHoverSystem())
             .Add(new RelativeSpeedAlongDirectionSystem())
@@ -43,7 +43,6 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new ApplyHoverForceSystem())
             .Add(new PlayerMovementSystem())
             .Add(new MoveSystem())
-            .Add(new JumpInitSystem())
             .Add(new JumpSystem())
             .Inject(_world)
             .AutoInject()

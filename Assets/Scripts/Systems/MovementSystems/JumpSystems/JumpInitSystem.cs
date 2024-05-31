@@ -1,24 +1,25 @@
+using Components.Jump;
 using Components.Movement;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Systems.MovementSystems.JumpSystems
 {
-    sealed  class JumpInitSystem: IEcsInit
+    sealed  class JumpInitSystem: IEcsRun
     {
         class Aspect : EcsAspectAuto
         {
             [Inc] public EcsPool<JumpComponent> JumpSettings;
+            [Inc] public EcsTagPool<PrepareJumpComponentTag> Tag;
         }
         
         [EcsInject] private EcsDefaultWorld _world;
         
-        public void Init()
+        public void Run()
         {
+            UnityDebugService.Activate();
             foreach (var e in _world.Where(out Aspect a))
             {
-                UnityDebugService.Activate();;
-                
                 float jumpHeight = a.JumpSettings.Get(e).settings.jumpHeight;
                 float minJumpHeight = a.JumpSettings.Get(e).settings.minJumpHeight;
                 float timeToApex = a.JumpSettings.Get(e).settings.timeToApex;
@@ -41,6 +42,7 @@ namespace Systems.MovementSystems.JumpSystems
                 a.JumpSettings.Get(e).initJumpVelocity = initJumpVelocity;
                 a.JumpSettings.Get(e).termVelocity = termVelocity;
                 a.JumpSettings.Get(e).termTime = termTime;
+                a.Tag.Del(e);
             }
         }
     }
