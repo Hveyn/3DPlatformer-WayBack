@@ -1,10 +1,9 @@
-using System.Runtime.InteropServices;
 using Components.Input;
 using Components.Movement;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.MovementSystems.MoveSystems
+namespace Systems.MovementSystems.MoveSystems
 {
     sealed class PlayerMovementSystem: IEcsFixedRunProcess
     {

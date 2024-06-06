@@ -83,12 +83,6 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetInt("SoundOn", isOn ? 1 : 0);
     }
     
-    public void ChangeMasterVolume(float volume)
-    {
-        mixer.audioMixer.SetFloat("MasterVolume", Mathf.Lerp(-80,0,volume));
-        PlayerPrefs.SetFloat("MasterVolume", volume);
-    }
-    
     public void ChangeSoundsVolume(float volume)
     {
         mixer.audioMixer.SetFloat("SoundVolume", Mathf.Lerp(-80,0,volume));

@@ -8,6 +8,7 @@ using Mono.InputControl;
 using Services;
 using Systems;
 using Systems.MovementSystems.JumpSystems;
+using Systems.MovementSystems.MoveSystems;
 using Systems.PhysicsSystems;
 
 
@@ -28,7 +29,7 @@ sealed class EcsStartup : MonoBehaviour
             .AddModule(new ModuleInputSystems())
             .Add(new JumpHandlerSystem())
             .AddModule(new ModuleLocomotionSystems())
-            .Add(new CinemamachineRunSystem())
+            .Add(new CinemachineRunSystem())
             .Add(new DebugDrawSystem())
             .Inject(_world, inputHandlerService, drawGizmos)
             .AutoInject()

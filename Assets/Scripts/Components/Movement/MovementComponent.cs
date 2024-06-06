@@ -10,7 +10,9 @@ namespace Components.Movement
     {
         public MovementSettingsSo settings;
         
+        //отделить в новый компонент
         public Transform orientationObject;
+        
         public Vector3 moveDirection;
         public Vector3 goalVel;
     }

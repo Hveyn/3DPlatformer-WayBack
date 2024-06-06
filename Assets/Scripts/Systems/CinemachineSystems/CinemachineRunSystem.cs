@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 namespace Client {
-    sealed class CinemamachineRunSystem : IEcsRun
+    sealed class CinemachineRunSystem : IEcsRun
     {
         class Aspect : EcsAspectAuto
         {
