@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Mono.InputControl
 {
@@ -10,15 +11,16 @@ namespace Mono.InputControl
     {
         [Header("Input Action Asset")]
         [SerializeField] private InputActionAsset playerConrols;
-
+        
         [Header("Action Map Name References")] 
-        [SerializeField] private string actionMapName = "Player";
+        [SerializeField] private string gameMapName = "Player";
 
         [Header("Action Name References")] 
         [SerializeField] private string move = "Move";
         [SerializeField] private string look = "Look";
         [SerializeField] private string jump = "Jump";
         [SerializeField] private string sprint = "Sprint";
+        [SerializeField] private string pause = "Pause";
 
         [Header("Deadzone Values")] 
         [SerializeField] private float leftStickDeadzoneValue = 0.2f;
@@ -27,12 +29,14 @@ namespace Mono.InputControl
         private InputAction _lookAction;
         private InputAction _jumpAction;
         private InputAction _sprintAction;
+        private InputAction _pauseAction;
 
         public Vector2 MoveInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public bool JumpTriggered { get; private set; }
-        
         public float SprintValue { get; private set; }
+        
+        public bool PauseTriggered { get; private set; }
 
         public static PlayerInputHandlerService Instance { get; private set; }
 
@@ -48,10 +52,11 @@ namespace Mono.InputControl
                 Destroy(gameObject);
             }
 
-            _moveAction = playerConrols.FindActionMap(actionMapName).FindAction(move);
-            _lookAction = playerConrols.FindActionMap(actionMapName).FindAction(look);
-            _jumpAction = playerConrols.FindActionMap(actionMapName).FindAction(jump);
-            _sprintAction = playerConrols.FindActionMap(actionMapName).FindAction(sprint);
+            _moveAction = playerConrols.FindActionMap(gameMapName).FindAction(move);
+            _lookAction = playerConrols.FindActionMap(gameMapName).FindAction(look);
+            _jumpAction = playerConrols.FindActionMap(gameMapName).FindAction(jump);
+            _sprintAction = playerConrols.FindActionMap(gameMapName).FindAction(sprint);
+            _pauseAction = playerConrols.FindActionMap(gameMapName).FindAction(pause);
             RegisterInputActions();
 
             InputSystem.settings.defaultDeadzoneMin = leftStickDeadzoneValue;
@@ -83,6 +88,9 @@ namespace Mono.InputControl
         
             _sprintAction.performed += context => SprintValue = context.ReadValue<float>();
             _sprintAction.canceled += _ => SprintValue = 0f;
+
+            _pauseAction.performed += _ => PauseTriggered = true;
+            _pauseAction.canceled += _ => PauseTriggered = false;
         }
 
         private void OnEnable()
@@ -91,7 +99,8 @@ namespace Mono.InputControl
             _lookAction.Enable();
             _jumpAction.Enable();
             _sprintAction.Enable();
-
+            _pauseAction.Enable();
+            
             InputSystem.onDeviceChange += OnDeviceChange;
         }
 
@@ -101,6 +110,7 @@ namespace Mono.InputControl
             _lookAction.Disable();
             _jumpAction.Disable();
             _sprintAction.Disable();
+            _pauseAction.Disable();
         
             InputSystem.onDeviceChange -= OnDeviceChange;
         }

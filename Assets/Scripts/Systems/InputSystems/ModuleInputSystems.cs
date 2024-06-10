@@ -9,7 +9,7 @@ namespace Systems.InputSystems
     {
         public void Import(EcsPipeline.Builder b)
         {
-            b.Add(new CursorLockSystem());
+           // b.Add(new CursorLockSystem());
             b.Add(new PlayerInputRunSystem());
         }
     }
