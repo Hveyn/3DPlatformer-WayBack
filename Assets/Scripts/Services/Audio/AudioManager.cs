@@ -23,12 +23,17 @@ namespace Services.Audio
 
         public Sound[] SFX;
 
+        private float _soundVolume;
+        private float _musicVolume;
+        
         private void Start()
         {
             toggleMusic.isOn = PlayerPrefs.GetInt("MusicOn",1) == 1;
             toggleSound.isOn = PlayerPrefs.GetInt("SoundOn",1) == 1;
-            sliderMusicValue.value = PlayerPrefs.GetFloat("MusicVolume",1);
-            sliderSoundValue.value = PlayerPrefs.GetFloat("SoundVolume",1);
+            sliderMusicValue.value = PlayerPrefs.GetFloat("MusicVolume",0.75f);
+            ChangeMusicVolume(sliderMusicValue.value);
+            sliderSoundValue.value = PlayerPrefs.GetFloat("SoundVolume",0.75f);
+            ChangeSoundsVolume(sliderSoundValue.value);
         }
 
         public void PlaySound(AudioClip audioClip, float volume)
@@ -67,7 +72,7 @@ namespace Services.Audio
         public void ToggleMusic(bool isOn)
         {
             if (isOn)
-                mixer.audioMixer.SetFloat("MusicVolume", 0);
+                mixer.audioMixer.SetFloat("MusicVolume", _musicVolume);
             else
                 mixer.audioMixer.SetFloat("MusicVolume", -80);
             
@@ -77,7 +82,7 @@ namespace Services.Audio
         public void ToggleSound(bool isOn)
         {
             if (isOn)
-                mixer.audioMixer.SetFloat("SoundVolume", 0);
+                mixer.audioMixer.SetFloat("SoundVolume", _soundVolume);
             else
                 mixer.audioMixer.SetFloat("SoundVolume", -80);
             
@@ -86,14 +91,26 @@ namespace Services.Audio
         
         public void ChangeSoundsVolume(float volume)
         {
-            mixer.audioMixer.SetFloat("SoundVolume", Mathf.Lerp(-80,0,volume));
+            _soundVolume = Mathf.Lerp(-80, 0, volume);
+            
+            if (toggleSound.isOn)
+            {
+                mixer.audioMixer.SetFloat("SoundVolume", _soundVolume);
+            }
+
             PlayerPrefs.SetFloat("SoundVolume", volume);
         }
         
         public void ChangeMusicVolume(float volume)
         {
-            mixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80,0,volume));
-            PlayerPrefs.SetFloat("SoundVolume", volume);
+            _musicVolume = Mathf.Lerp(-80, 0, volume);
+            
+            if (toggleMusic.isOn)
+            {
+                mixer.audioMixer.SetFloat("MusicVolume", _musicVolume);
+            }
+
+            PlayerPrefs.SetFloat("MusicVolume", volume);
         }
     }
 
