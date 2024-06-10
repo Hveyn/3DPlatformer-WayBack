@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace SOData
 {
+    /// <summary>
+    /// Класс настроект Ховера
+    /// </summary>
     [CreateAssetMenu(fileName = "Data", menuName = "ObjectSettings/HoverSettingsScriptableObject", order = 1)]
     public class HoverSettingsSo: ScriptableObject
     {

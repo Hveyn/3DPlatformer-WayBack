@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Mono.InputControl
 {
+    /// <summary>
+    /// Обработчик ввода от игрока
+    /// </summary>
     public class PlayerInputHandlerService : MonoBehaviour
     {
         [Header("Input Action Asset")]

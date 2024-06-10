@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace SOData
 {
+    /// <summary>
+    /// Класс настройки прыжка
+    /// </summary>
     [CreateAssetMenu(fileName = "Data", menuName = "ObjectSettings/JumpSettingsScriptableObject", order = 1)]
     public class JumpSettingsSo: ScriptableObject
     {

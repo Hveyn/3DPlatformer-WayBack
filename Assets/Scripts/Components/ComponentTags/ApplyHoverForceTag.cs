@@ -1,8 +1,8 @@
 using System;
 using DCFApixels.DragonECS;
 
-namespace Components {
+namespace Components.ComponentTags 
+{
     [Serializable]
     struct ApplyHoverForceTag: IEcsTagComponent { }
-    class ApplyHoverForceTagTemplate : TagComponentTemplate<ApplyHoverForceTag> { }
 }

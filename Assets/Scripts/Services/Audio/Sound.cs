@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Services.Audio
 {
+    /// <summary>
+    /// Класс для описания звуковых файлов
+    /// </summary>
     [System.Serializable] public class Sound
     {
         [Tooltip("Clip to play")]public AudioClip Clip;

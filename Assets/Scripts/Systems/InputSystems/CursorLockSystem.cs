@@ -2,7 +2,12 @@ using Components.Input;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client {
+namespace Systems.InputSystems
+{
+    
+    /// <summary>
+    /// Система скрытия курсора мыши в игре
+    /// </summary>
     sealed class CursorLockSystem : IEcsRun {
         
         class Aspect: EcsAspectAuto

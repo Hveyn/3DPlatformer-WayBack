@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 namespace Services
 {
+    /// <summary>
+    /// Управление сценами в игре
+    /// </summary>
     public class SceneManager: MonoBehaviour
     {
         

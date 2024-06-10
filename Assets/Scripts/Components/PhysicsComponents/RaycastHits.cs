@@ -1,9 +1,8 @@
 using System;
 using DCFApixels.DragonECS;
-using SOData;
 using UnityEngine;
 
-namespace Components
+namespace Components.PhysicsComponents
 {
     [Serializable]
     public struct RaycastHits: IEcsComponent

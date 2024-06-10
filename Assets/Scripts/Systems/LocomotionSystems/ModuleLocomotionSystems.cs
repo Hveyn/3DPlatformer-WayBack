@@ -1,8 +1,10 @@
-using Client.LocomotionSystems;
 using DCFApixels.DragonECS;
 
-namespace Client
+namespace Systems.LocomotionSystems
 {
+    /// <summary>
+    /// Модуль систем анимации персонажа
+    /// </summary>
     public class ModuleLocomotionSystems: IEcsModule
     {
         public void Import(EcsPipeline.Builder b)

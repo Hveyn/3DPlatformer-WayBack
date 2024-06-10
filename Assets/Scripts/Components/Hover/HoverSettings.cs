@@ -1,10 +1,12 @@
 using System;
 using DCFApixels.DragonECS;
 using SOData;
-using UnityEngine;
 
 namespace Components.Hover
 {
+    /// <summary>
+    /// Хранение настроект парения над поверхностью
+    /// </summary>
     [Serializable]
     public struct HoverSettings: IEcsComponent
     {

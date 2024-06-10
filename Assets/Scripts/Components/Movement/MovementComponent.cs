@@ -8,13 +8,10 @@ namespace Components.Movement
     [Serializable]
     public struct MovementComponent: IEcsComponent
     {
-        public MovementSettingsSo settings;
+        public MovementSettingsSo settings; // Настройки перемещения
         
-        //отделить в новый компонент
-        public Transform orientationObject;
-        
-        public Vector3 moveDirection;
-        public Vector3 goalVel;
+        public Vector3 moveDirection; // направление
+        public Vector3 goalVel; // целевая скорость
     }
     
     class MovementTemplate: ComponentTemplate<MovementComponent> { }

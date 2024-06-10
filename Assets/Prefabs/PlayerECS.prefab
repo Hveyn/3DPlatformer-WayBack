@@ -102,56 +102,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - rid: 7946135640442142723
-  - rid: 7946135640442142722
-  - rid: 7946135640442142721
-  - rid: 7946135867001405443
-  - rid: 7946135867001405444
-  - rid: 7946135951149105185
-  - rid: 7946135951491465493
-  - rid: 7946135952550002962
-  - rid: 7946135952550002973
-  - rid: 7946135958496739328
+  - rid: 3593144871342047234
+  - rid: 3593144871342047235
+  - rid: 3593144871342047236
+  - rid: 3593144871342047237
+  - rid: 3593144871342047238
+  - rid: 3593144871342047239
+  - rid: 3593144871342047240
+  - rid: 3593144871342047241
+  - rid: 3593144871342047242
+  - rid: 3593144871342047243
+  - rid: 3593144871342047250
+  - rid: 3593144871342047251
+  - rid: 3593144871342047252
+  - rid: 3593144871342047253
+  - rid: 3593144871342047254
+  - rid: 3593144871342047255
+  - rid: 3593144871342047256
   references:
     version: 2
     RefIds:
-    - rid: 7946135640442142721
-      type: {class: UnityComponentRigitBodyInitializer, ns: DCFApixels.DragonECS,
-        asm: DCFApixels.DragonECS.Unity}
-      data:
-        component:
-          obj: {fileID: 975727153041370198}
-    - rid: 7946135640442142722
-      type: {class: UnityComponentAnimatorInitializer, ns: DCFApixels.DragonECS, asm: DCFApixels.DragonECS.Unity}
-      data:
-        component:
-          obj: {fileID: 5268916245776404593}
-    - rid: 7946135640442142723
+    - rid: 3593144871342047234
       type: {class: UnityComponentCapsuleColliderTemplate, ns: DCFApixels.DragonECS,
         asm: DCFApixels.DragonECS.Unity}
       data:
         component:
           obj: {fileID: 8757026190022027489}
-    - rid: 7946135867001405443
+    - rid: 3593144871342047235
+      type: {class: UnityComponentRigitBodyInitializer, ns: DCFApixels.DragonECS,
+        asm: DCFApixels.DragonECS.Unity}
+      data:
+        component:
+          obj: {fileID: 975727153041370198}
+    - rid: 3593144871342047236
+      type: {class: UnityComponentAnimatorInitializer, ns: DCFApixels.DragonECS, asm: DCFApixels.DragonECS.Unity}
+      data:
+        component:
+          obj: {fileID: 5268916245776404593}
+    - rid: 3593144871342047237
+      type: {class: AnimationTemplate, ns: Components.Animations, asm: Assembly-CSharp}
+      data:
+        component:
+          isRunningHash: 0
+          isJumpingHash: 0
+          yVelocityHash: 0
+    - rid: 3593144871342047238
       type: {class: HoverSettingsTemplate, ns: Components.Hover, asm: Assembly-CSharp}
       data:
         component:
           settings: {fileID: 11400000, guid: 5f3abdf9f07959f47bf434734c99363b, type: 2}
-    - rid: 7946135867001405444
-      type: {class: HoverSettingsTemplate, ns: Components, asm: Assembly-CSharp}
-      data: {}
-    - rid: 7946135951149105185
-      type: {class: HoverOnTagTemplate, ns: Components.Hover, asm: Assembly-CSharp}
-      data: {}
-    - rid: 7946135951491465493
-      type: {class: MovementTemplate, ns: Components.Movement, asm: Assembly-CSharp}
-      data:
-        component:
-          settings: {fileID: 11400000, guid: 102173b55a1b5444097d4ebf893212e6, type: 2}
-          orientationObject: {fileID: 8446877614162182117}
-          moveDirection: {x: 0, y: 0, z: 0}
-          goalVel: {x: 0, y: 0, z: 0}
-    - rid: 7946135952550002962
+    - rid: 3593144871342047239
       type: {class: InputPlayerTemplate, ns: Components.Input, asm: Assembly-CSharp}
       data:
         component:
@@ -159,8 +159,20 @@ MonoBehaviour:
           lookInput: {x: 0, y: 0}
           jumpTriggered: 0
           sprintValue: 0
-    - rid: 7946135952550002973
-      type: {class: JumpTemplate, ns: Components.Movement, asm: Assembly-CSharp}
+    - rid: 3593144871342047240
+      type: {class: MovementTemplate, ns: Components.Movement, asm: Assembly-CSharp}
+      data:
+        component:
+          settings: {fileID: 11400000, guid: 102173b55a1b5444097d4ebf893212e6, type: 2}
+          moveDirection: {x: 0, y: 0, z: 0}
+          goalVel: {x: 0, y: 0, z: 0}
+    - rid: 3593144871342047241
+      type: {class: OrientationObjectTemplate, ns: Components.PhysicsComponents, asm: Assembly-CSharp}
+      data:
+        component:
+          orientation: {fileID: 8446877614162182117}
+    - rid: 3593144871342047242
+      type: {class: JumpTemplate, ns: Components.Jump, asm: Assembly-CSharp}
       data:
         component:
           settings: {fileID: 11400000, guid: 4b960dbee67f88a4aa4a8f45efe26194, type: 2}
@@ -172,17 +184,40 @@ MonoBehaviour:
           cayoteTimeRemember: 0
           isJumping: 0
           isFalling: 0
-    - rid: 7946135958496739328
+    - rid: 3593144871342047243
+      type: {class: HoverSettingsTemplate, ns: Components.PhysicsComponents, asm: Assembly-CSharp}
+      data: {}
+    - rid: 3593144871342047250
       type: {class: CinemamachineSettingsTemplate, ns: Components.Camera, asm: Assembly-CSharp}
       data:
         component:
           cinemachineFreeLook: {fileID: 0}
           camera: {fileID: 0}
           invertYAxis: 0
-          rotationSpeed: 7
-          orientation: {fileID: 8446877614162182117}
+          rotationSpeed: 0.2
           player: {fileID: 3150283195722881567}
           playerObj: {fileID: 6082470989797578720}
+    - rid: 3593144871342047251
+      type: {class: PreparePhysicsTagTemplate, ns: Components.ComponentTags, asm: Assembly-CSharp}
+      data: {}
+    - rid: 3593144871342047252
+      type: {class: PrepareJumpComponentTagTemplate, ns: Components.ComponentTags,
+        asm: Assembly-CSharp}
+      data: {}
+    - rid: 3593144871342047253
+      type: {class: PrepareAnimationTagTemplate, ns: Components.ComponentTags, asm: Assembly-CSharp}
+      data: {}
+    - rid: 3593144871342047254
+      type: {class: HoverOnTagTemplate, ns: Components.Hover, asm: Assembly-CSharp}
+      data: {}
+    - rid: 3593144871342047255
+      type: {class: CursorLockOnTemplate, ns: Components.Input, asm: Assembly-CSharp}
+      data:
+        component:
+          isLock: 1
+    - rid: 3593144871342047256
+      type: {class: PlayerTagTemplate, ns: Components, asm: Assembly-CSharp}
+      data: {}
 --- !u!114 &214914318621404913
 MonoBehaviour:
   m_ObjectHideFlags: 0

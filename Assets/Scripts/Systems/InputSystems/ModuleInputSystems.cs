@@ -1,7 +1,10 @@
 using DCFApixels.DragonECS;
 
-namespace Client
+namespace Systems.InputSystems 
 {
+    /// <summary>
+    /// Модуль систем ввода
+    /// </summary>
     public class ModuleInputSystems: IEcsModule
     {
         public void Import(EcsPipeline.Builder b)

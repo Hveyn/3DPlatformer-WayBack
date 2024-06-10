@@ -1,10 +1,13 @@
 using Components.Input;
-using Components.Movement;
+using Components.Jump;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Systems.MovementSystems.JumpSystems
 {
+    /// <summary>
+    /// Система считывания активации прыжка от игрока
+    /// </summary>
     sealed class JumpHandlerSystem: IEcsRun
     {
         class Aspect: EcsAspectAuto
@@ -32,7 +35,7 @@ namespace Systems.MovementSystems.JumpSystems
                 }
                 if (!a.PlayerInput.Get(e).jumpTriggered && a.JumpData.Get(e).isJumping)
                 {
-                    Debug.Log("Yvelocity: " + rb.velocity.y); 
+                    // Debug.Log("Yvelocity: " + rb.velocity.y); 
                     
                     if (rb.velocity.y > termVelocity)
                     {

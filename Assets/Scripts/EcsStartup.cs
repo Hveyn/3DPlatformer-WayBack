@@ -1,17 +1,19 @@
 using DCFApixels.DragonECS;
 using UnityEngine;
-using Client;
-using Client.MovementSystems;
-using Client.MovementSystems.MoveSystems;
-using Client.Physics;
 using Mono.InputControl;
 using Services;
 using Systems;
+using Systems.CinemachineSystems;
+using Systems.InputSystems;
+using Systems.LocomotionSystems;
+using Systems.MovementSystems.HoverSystems;
 using Systems.MovementSystems.JumpSystems;
 using Systems.MovementSystems.MoveSystems;
 using Systems.PhysicsSystems;
 
-
+/// <summary>
+/// Главный класс ECS инициализирующий системы и ECS мир
+/// </summary>
 sealed class EcsStartup : MonoBehaviour
 {
     [SerializeField] private PlayerInputHandlerService inputHandlerService;
@@ -42,7 +44,7 @@ sealed class EcsStartup : MonoBehaviour
             .Add(new RelativeSpeedAlongDirectionSystem())
             .Add(new GetSpringForceSystem())
             .Add(new ApplyHoverForceSystem())
-            .Add(new PlayerMovementSystem())
+            .Add(new MovementHandlerSystem())
             .Add(new MoveSystem())
             .Add(new JumpSystem())
             .Inject(_world)

@@ -3,8 +3,11 @@ using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.MovementSystems.MoveSystems
+namespace Systems.MovementSystems.MoveSystems
 {
+    /// <summary>
+    /// Система передвижение объекта
+    /// </summary>
     sealed class MoveSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

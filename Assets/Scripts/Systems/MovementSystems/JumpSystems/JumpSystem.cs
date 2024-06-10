@@ -1,12 +1,13 @@
-using System.Linq;
-using Components.Input;
-using Components.Movement;
+using Components.Jump;
 using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.Physics
+namespace Systems.MovementSystems.JumpSystems
 {
+    /// <summary>
+    /// Система приминения силы прыжка
+    /// </summary>
     public class JumpSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

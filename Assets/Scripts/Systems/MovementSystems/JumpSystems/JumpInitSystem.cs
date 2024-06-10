@@ -1,10 +1,13 @@
+using Components.ComponentTags;
 using Components.Jump;
-using Components.Movement;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Systems.MovementSystems.JumpSystems
 {
+    /// <summary>
+    /// Система настройки параметров физики прыжка
+    /// </summary>
     sealed  class JumpInitSystem: IEcsRun
     {
         class Aspect : EcsAspectAuto

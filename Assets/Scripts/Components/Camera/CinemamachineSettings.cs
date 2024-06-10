@@ -13,9 +13,6 @@ namespace Components.Camera
         public bool invertYAxis;
         public float rotationSpeed;
         
-        //отделить в новый компонент
-        public Transform orientation;
-        
         public Transform player;
         public Transform playerObj;
     }

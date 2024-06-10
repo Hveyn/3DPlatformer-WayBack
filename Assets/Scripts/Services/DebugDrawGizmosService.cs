@@ -1,9 +1,11 @@
-using Components.Hover;
 using SOData;
 using UnityEngine;
 
 namespace Services
 {
+    /// <summary>
+    /// Сервис отрисовки ui элементов для тестирования
+    /// </summary>
     public class DebugDrawGizmosService: MonoBehaviour
     {
         private Transform _playerTransform;

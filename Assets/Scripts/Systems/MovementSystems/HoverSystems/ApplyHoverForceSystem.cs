@@ -1,11 +1,14 @@
-using Components;
+using Components.ComponentTags;
 using Components.Hover;
 using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.MovementSystems
+namespace Systems.MovementSystems.HoverSystems
 {
+    /// <summary>
+    /// Система приминения силы Hover
+    /// </summary>
     sealed class ApplyHoverForceSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

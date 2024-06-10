@@ -1,10 +1,12 @@
-using DCFApixels.DragonECS;
-using Components;
 using Components.PhysicsComponents;
+using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.Physics
+namespace Systems.PhysicsSystems
 {
+    /// <summary>
+    /// Система расчёта силы пружины
+    /// </summary>
     sealed class GetSpringForceSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

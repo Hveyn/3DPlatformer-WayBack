@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace SOData
 {
+    /// <summary>
+    /// Класс настройки скорости перемещения
+    /// </summary>
     [CreateAssetMenu(fileName = "Data", menuName = "ObjectSettings/MovementSettingsScriptableObject", order = 1)]
     public class MovementSettingsSo: ScriptableObject
     {

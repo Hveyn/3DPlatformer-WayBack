@@ -1,7 +1,7 @@
 using System;
 using DCFApixels.DragonECS;
 
-namespace Components.Jump
+namespace Components.ComponentTags
 {
     [Serializable]
     public struct PrepareJumpComponentTag : IEcsTagComponent { }

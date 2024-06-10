@@ -1,10 +1,13 @@
-using Components;
-using Components.Jump;
+using Components.ComponentTags;
+using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.Physics
+namespace Systems.PhysicsSystems
 {
+    /// <summary>
+    /// Инициализация физических элементов
+    /// </summary>
     sealed class PhysicsInitSystem: IEcsRun
     {
         class Aspect : EcsAspectAuto

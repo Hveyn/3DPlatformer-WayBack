@@ -1,11 +1,14 @@
-using Components;
+using Components.ComponentTags;
 using Components.Hover;
 using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.MovementSystems
+namespace Systems.MovementSystems.HoverSystems
 {
+    /// <summary>
+    /// Система создания запроса на проверку земли и пружины персонажа
+    /// </summary>
     sealed class PrepareHoverSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

@@ -1,9 +1,13 @@
-using DCFApixels.DragonECS;
-using Components;
 using Components.Input;
+using DCFApixels.DragonECS;
 using Mono.InputControl;
 
-namespace Client {
+namespace Systems.InputSystems 
+{
+    
+    /// <summary>
+    /// Система трансляции ввода в ECS мир
+    /// </summary>
     sealed class PlayerInputRunSystem : IEcsRun
     {
         class Aspect : EcsAspectAuto

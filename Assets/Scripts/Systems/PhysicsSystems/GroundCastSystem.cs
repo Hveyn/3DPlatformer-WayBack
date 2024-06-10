@@ -1,10 +1,12 @@
-using Components;
 using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
 namespace Systems.PhysicsSystems
 {
+    /// <summary>
+    /// Система обнаружения объектов под персонажем
+    /// </summary>
     sealed class GroundCastSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto
@@ -30,11 +32,10 @@ namespace Systems.PhysicsSystems
                     a.CastResult.Get(e).layers);
                 
                 
-                //Debug CastRay
-                Debug.DrawRay(a.Rb.Get(e).obj.transform.position,
-                    -a.Rb.Get(e).obj.transform.up, Color.red, a.CastResult.Get(e).maxDistance);
+                /*Debug.DrawRay(a.Rb.Get(e).obj.transform.position,
+                    -a.Rb.Get(e).obj.transform.up, Color.red, a.CastResult.Get(e).maxDistance);*/
 
-                Debug.Log("HitCOunt: "+hitCount);
+                //Debug.Log("HitCOunt: "+hitCount);
                 if (hitCount > 0)
                 {
                     for (int i = 0; i < hitCount; i++)

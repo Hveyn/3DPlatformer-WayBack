@@ -1,11 +1,12 @@
-using Components;
 using Components.Hover;
 using Components.PhysicsComponents;
 using DCFApixels.DragonECS;
-using UnityEngine;
 
-namespace Client.MovementSystems
+namespace Systems.MovementSystems.HoverSystems
 {
+    /// <summary>
+    /// Система отключающая HoverSytems
+    /// </summary>
     sealed class DisableHoverSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto

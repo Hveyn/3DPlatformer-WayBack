@@ -1,10 +1,13 @@
 using Components.Animations;
-using Components.Jump;
+using Components.ComponentTags;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.LocomotionSystems
+namespace Systems.LocomotionSystems
 {
+    /// <summary>
+    /// Система инициализации анимаций персонажа
+    /// </summary>
     sealed class CharacterLocomotionInitSystem: IEcsRun
     {
         class Aspect: EcsAspectAuto

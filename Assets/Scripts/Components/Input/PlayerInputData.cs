@@ -2,7 +2,11 @@ using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Components.Input {
+namespace Components.Input
+{
+    /// <summary>
+    /// Данные ввода игрока
+    /// </summary>
     [Serializable]
     struct PlayerInputData: IEcsComponent
     {

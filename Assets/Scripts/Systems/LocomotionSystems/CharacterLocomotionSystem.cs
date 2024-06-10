@@ -2,8 +2,11 @@ using Components.Animations;
 using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.LocomotionSystems
+namespace Systems.LocomotionSystems
 {
+    /// <summary>
+    /// Система передачи данный физического объекта в аниматор
+    /// </summary>
     sealed class CharacterLocomotionSystem: IEcsRun
     {
         class Aspect: EcsAspectAuto

@@ -1,7 +1,6 @@
 using System;
 using DCFApixels.DragonECS;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Components.PhysicsComponents
 {
@@ -15,6 +14,6 @@ namespace Components.PhysicsComponents
         /// <summary>
         /// Output
         /// </summary>
-        [FormerlySerializedAs("result")] public float relativeSpeed;
+        public float relativeSpeed;
     }
 }

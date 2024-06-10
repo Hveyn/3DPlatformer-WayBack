@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-using Components;
 using Components.Hover;
 using DCFApixels.DragonECS;
 using Services;
@@ -7,6 +5,9 @@ using UnityEngine;
 
 namespace Systems
 {
+    /// <summary>
+    /// Отображение данных для тестирования
+    /// </summary>
     sealed class DebugDrawSystem: IEcsInit
     {
         class Aspect : EcsAspectAuto

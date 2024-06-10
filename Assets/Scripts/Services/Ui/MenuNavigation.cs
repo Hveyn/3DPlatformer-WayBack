@@ -1,10 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace Services
+namespace Services.Ui
 {
+    /// <summary>
+    /// Класс управления навигацией по интерфейсу
+    /// </summary>
     public class MenuNavigation: MonoBehaviour
     {
         [SerializeField] private GameObject defaultSelectedObject;

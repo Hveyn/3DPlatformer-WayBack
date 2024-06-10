@@ -1,10 +1,12 @@
-using DCFApixels.DragonECS;
-using Components;
 using Components.PhysicsComponents;
+using DCFApixels.DragonECS;
 using UnityEngine;
 
-namespace Client.Physics
+namespace Systems.PhysicsSystems
 {
+    /// <summary>
+    /// Система расчёта относительной скорости в продольном направлении
+    /// </summary>
     sealed class RelativeSpeedAlongDirectionSystem: IEcsFixedRunProcess
     {
         class Aspect: EcsAspectAuto
