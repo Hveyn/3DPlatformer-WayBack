@@ -8604,6 +8604,16 @@ PrefabInstance:
       propertyPath: sliderSoundValue
       value: 
       objectReference: {fileID: 859838350}
+    - target: {fileID: 4641587277183460973, guid: 556785c5651ff754a9bfa4754d8327af,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641587277183460973, guid: 556785c5651ff754a9bfa4754d8327af,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 59017ea39cd7bf74ab1cf9851e554b0b, type: 3}
     - target: {fileID: 8082165055564128361, guid: 556785c5651ff754a9bfa4754d8327af,
         type: 3}
       propertyPath: m_Name

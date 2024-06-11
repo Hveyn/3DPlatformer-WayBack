@@ -30,9 +30,9 @@ namespace Services.Audio
         {
             toggleMusic.isOn = PlayerPrefs.GetInt("MusicOn",1) == 1;
             toggleSound.isOn = PlayerPrefs.GetInt("SoundOn",1) == 1;
-            sliderMusicValue.value = PlayerPrefs.GetFloat("MusicVolume",0.75f);
+            sliderMusicValue.value = PlayerPrefs.GetFloat("MusicVolume",0.5f);
             ChangeMusicVolume(sliderMusicValue.value);
-            sliderSoundValue.value = PlayerPrefs.GetFloat("SoundVolume",0.75f);
+            sliderSoundValue.value = PlayerPrefs.GetFloat("SoundVolume",0.5f);
             ChangeSoundsVolume(sliderSoundValue.value);
         }
 
