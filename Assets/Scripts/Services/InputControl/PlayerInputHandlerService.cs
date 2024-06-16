@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -88,9 +89,11 @@ namespace Mono.InputControl
         
             _sprintAction.performed += context => SprintValue = context.ReadValue<float>();
             _sprintAction.canceled += _ => SprintValue = 0f;
+        }
 
-            _pauseAction.performed += _ => PauseTriggered = true;
-            _pauseAction.canceled += _ => PauseTriggered = false;
+        private void Update()
+        {
+            PauseTriggered = _pauseAction.WasPressedThisFrame();
         }
 
         private void OnEnable()

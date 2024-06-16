@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "75f85bed0166975a764f1ca9248d2e3559022ac0"
+      "hash": "555e5502c7178c479736d1a37073a8818e341825"
     },
     "com.dcfa_pixels.dragonecs-auto_injections": {
       "version": "https://github.com/DCFApixels/DragonECS-AutoInjections.git",
@@ -14,7 +14,7 @@
       "dependencies": {
         "com.dcfa_pixels.dragonecs": "https://github.com/DCFApixels/DragonECS.git"
       },
-      "hash": "3758dd839060dfb8d35fd1c65eebe695ff47d4c6"
+      "hash": "505be3fd4d0bbecc932ee6594e8889a002c9dfc6"
     },
     "com.dcfa_pixels.dragonecs-unity": {
       "version": "https://github.com/DCFApixels/DragonECS-Unity.git",
@@ -23,7 +23,7 @@
       "dependencies": {
         "com.dcfa_pixels.dragonecs": "https://github.com/DCFApixels/DragonECS.git"
       },
-      "hash": "87f70d9927cdc1e2fe4d7908350f267bc2dc6337"
+      "hash": "33c9bb10a700c4bc12bbc0f823cc9d9e733b1f0b"
     },
     "com.unity.burst": {
       "version": "1.8.8",

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Services
 {
@@ -8,6 +9,7 @@ namespace Services
     public class BonusManager : MonoBehaviour
     {
         [SerializeField] private int countBonus;
+        [SerializeField] private GameObject pickUpEffect;
     
         public int CountBonus => countBonus;
 
@@ -21,6 +23,11 @@ namespace Services
             if (other.gameObject.CompareTag("Bonus"))
             {
                 countBonus++;
+                if (pickUpEffect != null)
+                {
+                    GameObject copy = Instantiate(pickUpEffect, gameObject.transform);
+                    Destroy(copy, 1f);
+                }
                 Destroy(other.gameObject);
             }
         }

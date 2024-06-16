@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0fd88bf92a4557ad96ecf96c62d7c4, type: 3}
   m_Name: PlayerMovementSettings
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 12
   acceleration: 200
   maxAccelForce: 150
   airMultiplier: 0.8
