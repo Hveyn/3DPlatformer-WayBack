@@ -7,3 +7,10 @@
 Программный код проекта представлен в папке [Scripts](https://github.com/Hveyn/3DPlatformer-WayBack/tree/Demo_ECS/Assets/Scripts).
 Основные механики игры созданны с учётом ахритектурного паттерна [ECS](https://habr.com/ru/articles/665276/).
 Используется реализация ECS от [DragonECS](https://github.com/DCFApixels/DragonECS).
+
+## Управление
+Перемещение персонажа - WASD. 
+
+Прыжок - Space.
+
+Камера - вращение мышкой.
